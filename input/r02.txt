@@ -1,0 +1,34 @@
+8 6           world x and y dims
+0 0  3        viewpoint (x, y, z)
+
+14            Left Wall
+0 5 5         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+ 1  0 1       normal
+-4 -1 0       point
+
+14            Right Wall
+5 0 5         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+-1 0  1       normal
+ 4 -1 0       point
+
+14            Floor
+0 2 0         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 1  0        normal
+0 -4 0        point
+
+13            sphere
+1 20 1       ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 2 -3        center
+1.5           radius

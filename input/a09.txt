@@ -1,0 +1,98 @@
+8 6           world x and y dims
+0 0 -1.1         viewpoint (x, y, -z)
+
+13            Dark Green sphere
+0 5 0
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+-10 0 4       center
+2             radius
+
+13            Dark Red sphere
+5 0 0
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+-8 0 4         enter
+2             radius
+
+13            Dark Blue sphere
+0 0 5
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+-6 0 4         center
+2             radius
+
+13            Bright Green sphere
+0 10 0
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+10 0 4        center
+2             radius
+
+13            Bright Red sphere
+10 0 0
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+8 0 4         center
+2             radius
+
+13            Bright Blue sphere
+0 0 10 
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+6 0 4         center
+2             radius
+
+13            White sphere
+7 7 7 
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 0 4         center
+2             radius
+
+13            Magenta sphere
+7 0 7 
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 2 4         center
+2             radius
+
+13            Cyan sphere
+0 7 7 
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 -2 4         center
+2             radius
+
+13            Yellow sphere
+7 7 0 
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 -6 4         center
+2             radius
+
+13            Yellow sphere
+2 2 0 
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 6 4         center
+2             radius
+
+13            Black sphere
+0 0 0 
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 0 2         center
+.4            radius

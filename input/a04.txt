@@ -1,0 +1,42 @@
+12 10         world x and y dims
+0 0 6         viewpoint (x, y, -z)
+
+14            plane - diagonal wall
+2 5 2         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+1 0  1        normal
+-3 -1 0       point
+
+14            plane - diagonal wall
+5 0 5         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+-1 0  1        normal
+ 3 -1 0        point
+
+14            plane
+0 3 9         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 1  0       normal
+0 3 0        point
+
+14            plane
+0 3 9         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 1  0       normal
+0 -3 0       point
+
+13            sphere
+3 1 9         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 0  -2       point
+2.4           

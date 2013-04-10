@@ -1,0 +1,78 @@
+8 6           world x and y dims
+0 0 3         viewpoint (x, y, z)
+
+14            plane
+0 5 200       ambient
+0 0 0         diffuse
+0 0 0         specular
+
+0 0  1        normal
+0 0 -5        point
+
+13            sphere
+25 3 0        ambient
+0 0 0         diffuse
+0 0 0         specular
+
+0 1 -3
+2.5
+
+14            plane
+0 22 1        ambient
+0 0 0         diffuse
+0 0 0         specular
+
+0 -1.8 0        normal
+0 -3 -6        point
+
+13            sphere
+255 255 255   rgb ambient
+0 0 0         rgb diffuse
+0 0 0         rgb specular
+
+6 6 -3
+1
+
+13            sphere
+255 255 255   rgb ambient
+0 0 0         rgb diffuse
+0 0 0         rgb specular
+
+7 6 -3
+1
+
+13            sphere
+255 255 255         rgb ambient
+0 0 0         rgb diffuse
+0 0 0         rgb specular
+
+-3 6 -3
+1
+
+13            sphere
+255 255 255         rgb ambient
+0 0 0         rgb diffuse
+0 0 0         rgb specular
+
+-4 6 -3
+1
+
+13            sphere
+255 255 255         rgb ambient
+0 0 0         rgb diffuse
+0 0 0         rgb specular
+
+-5 6 -3.5
+1
+
+13            sphere
+255 255 255         rgb ambient
+0 0 0         rgb diffuse
+0 0 0         rgb specular
+
+-6 6 -3.5
+1
+
+
+
+

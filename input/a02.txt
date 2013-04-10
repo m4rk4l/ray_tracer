@@ -1,0 +1,10 @@
+10 8         world x and y dims
+0 0 10       viewpoint (x, y, z)
+
+14           plane
+5 5 15       r g b ambient
+0 0 0        r g b diffuse
+0 0 0        r g b specular
+
+0 0 1        normal
+0 0 0        point
