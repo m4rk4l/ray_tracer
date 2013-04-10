@@ -1,0 +1,24 @@
+This file contains an implementation of a raytracer.
+Authors: Marco Anton & Ben Dana
+
+to run a fresh program:
+    - make fresh
+to run raytracer:
+    - make run
+one can change the input files by changing the ''Makefile'' file. user should
+scroll to the bootom and change the run target
+
+also, our created images are in input/in01.txt and input/in02.txt
+
+TODO:
+    - Parsing objects correctly  (done, could improve reading obj. as long
+      there are lines, keep trying to read objects)
+    - creating image (somewhat working.)
+    - write image to stdout (DONE)
+
+NOT WORKING
+    some images don't show or show wrong output. need to have debuging working
+    to see where is the error.
+        - planes:
+          planes are working, however, need to check boundary regions.
+        - spheres:
