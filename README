@@ -13,12 +13,10 @@ also, our created images are in input/in01.txt and input/in02.txt
 TODO:
     - Parsing objects correctly  (done, could improve reading obj. as long
       there are lines, keep trying to read objects)
-    - creating image (somewhat working.)
+    - creating image (DONE, adding more images to be created.)
     - write image to stdout (DONE)
 
 NOT WORKING
-    some images don't show or show wrong output. need to have debuging working
-    to see where is the error.
-        - planes:
-          planes are working, however, need to check boundary regions.
-        - spheres:
+    - need to take care of memery leaks!!!
+    - working on procedural planes
+    - working on matrix library
