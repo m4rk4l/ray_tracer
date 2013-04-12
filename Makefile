@@ -8,7 +8,7 @@ DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
 #DEBUG += -DDBG_PIX_2_WORLD
 #DEBUG += -DDBG_MAKE_PIXEL -DDBG_CLAMP_INTENSITY
 #DEBUG += -DDBG_HITS_PLANE
-DEBUG += -DDBG_HITS_SPHERE -DDBG_SPHERE_GETAMB
+#DEBUG += -DDBG_HITS_SPHERE -DDBG_SPHERE_GETAMB
 
 # Location of header files
 INCDIR = include/
@@ -102,4 +102,4 @@ ddd: $(PROG)
 # Just run the executable
 #---------------------------------------------------------------------------
 run: $(PROG)
-	./$(PROG) 640 480 < input/r04.txt 2> runtime.info > img.ppm
+	./$(PROG) 160 120 < input/a01.txt 2> runtime.info > img.ppm

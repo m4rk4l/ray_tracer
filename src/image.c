@@ -30,8 +30,8 @@ void make_image(model_t* model) {
     for(y = 0; y < height; y++) {
         for(x = 0; x < width; x++) {
 #ifdef DBG_PIX
-    fprintf(stderr, "\nx, y -  %d %d\n", x, y);
-    fprintf(stderr, "\nstart end -  %d %d\n", (width - x), (height - y));
+    //fprintf(stderr, "\nx, y -  %d %d\n", x, y);
+    //fprintf(stderr, "\nstart end -  %d %d\n", (width - x), (height - y));
     fprintf(stderr, "\nPIX %4d %4d - ", x, y);
 #endif
             make_pixel(model, x, height - y, (pixmap + incrementer));
@@ -66,10 +66,10 @@ void make_pixel(model_t* model, int x, int y, unsigned char* pixval) {
     }
 
     get_dir(model->proj->view_point, world, dir);
-/**#ifdef DBG_MAKE_PIXEL
+#ifdef DBG_MAKE_PIXEL
     fprintf(stderr, "\ndirection: (%5.2lf, %5.2lf, %5.2lf)\n",
                     dir[0], dir[1], dir[2]);
-#endif*/
+#endif
     ray_trace(model, model->proj->view_point, dir, intensity, 0.0, NULL);
     //clamp each element of intensity to the range (0.0, 1.0)
     clamp_intensity(SCALE_RGB_MIN, SCALE_RGB_MAX, intensity);

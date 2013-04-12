@@ -3,7 +3,7 @@
 #
 CC=gcc
 
-CFLAGS= -I -Wall -Wextra
+CFLAGS=-I -Wall -Wextra
 
 default:         a.out
 matlib.o:		 matlib.c
