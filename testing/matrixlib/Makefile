@@ -3,7 +3,7 @@
 #
 CC=gcc
 
-CFLAGS=-ggdb -Wall -Wextra -Wswitch -Wswitch-default -pedantic-errors -ansi
+CFLAGS= -I -Wall -Wextra
 
 default:         a.out
 matlib.o:		 matlib.c
