@@ -10,13 +10,28 @@ scroll to the bootom and change the run target
 
 also, our created images are in input/in01.txt and input/in02.txt
 
+our program expects the following format:
+x x     world x and y dims
+x x x   viewpoint location
+
+x       object
+x x x   ambient
+x x x   diffuse
+x x x   specular
+
+x x x   the following lines are object spcific.
+x x     one must leave a blank line between obj specific
+x x x   data and the next object
+...
+
 TODO:
     - Parsing objects correctly  (done, could improve reading obj. as long
-      there are lines, keep trying to read objects)
+      there are lines, keep trying to read objects).
     - creating image (DONE, adding more images to be created.)
     - write image to stdout (DONE)
 
 NOT WORKING
     - need to take care of memery leaks!!!
     - working on procedural planes
-    - working on matrix library
+    - need to figure out which formula to use in the projection funciton
+      see veclib.c/veclib.h
