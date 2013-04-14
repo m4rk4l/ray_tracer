@@ -1,2 +1,3 @@
 #Ingores all bin directories
 bin/
+objects/

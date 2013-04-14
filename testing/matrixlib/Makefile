@@ -6,11 +6,11 @@ CC=gcc
 CFLAGS=-I -Wall -Wextra
 
 default:         a.out
-matlib.o:		 matlib.c
-tester.o:        tester.c
+veclib.o:		 veclib.c
+main.o:          main.c
 
 # Build the executable 
-a.out: matlib.o tester.o
+a.out: veclib.o main.o
 	$(CC) $(CFLAGS) $^ $(LIBS) -lm
 
 # Clean out all transient files

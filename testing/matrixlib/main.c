@@ -2,7 +2,7 @@
  * Tester for my matrix library
  */
 
-#include "matlib.h"
+#include "veclib.h"
 
 int main(void) {
     fprintf(stdout, "MATRIX LIBRARY TESTER\n");
