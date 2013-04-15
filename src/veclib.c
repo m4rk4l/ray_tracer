@@ -187,7 +187,6 @@ void vecprn3(FILE* out, char* desc, double* vec) {
 static void cpy_mat(double* dest, double* src, int size);
 static void multiply(int rowA, int colA, int rowB, int colB, double* A,
                                                double* B, double* product);
-static double* mat_init(double* mat, int size);
 
 /**
  * Finds the cross products of two vectors.
@@ -267,7 +266,7 @@ void mat_vec_mul(double* x, double* y, double* z, size_t size) {
 static void multiply(int rowA, int colA, int rowB, int colB, double* A,
                                                double* B, double* product) {
     int i, j, k;
-    int count = 1;
+//    int count = 1;
     double sum = 0;
 //fprintf(stderr, "-----%d %d %d %d----\n", rowA, colA, rowB, colB);
     for (i = 0; i < rowA; i++) {
@@ -361,7 +360,6 @@ void mat_print(FILE* out, char* desc, double* matrix, int size) {
  */
 static void cpy_mat(double* dest, double* src, int size) {
     int i, j;
-    int count = 1;
     for (i = 0; i < size; i++) {
         for(j = 0; j < size; j++) {
             dest[(i*size)+j] = src[(i*size)+j];
@@ -381,19 +379,4 @@ static void cpy_vec(double* dest, double* src, int size) {
     for (i = 0; i < size; i++) {
         dest[i] = src[i];
     }
-}
-
-/**
- * Initializes matrix with its values to 0.
- * @param mat a matrix to initialize
- * @param size the size of the matrix
- */
-static double* mat_init(double* mat, int size) {
-    int i, j;
-    for (i = 0; i < size; i++) {
-        for(j = 0; j < size; j++) {
-            *(mat + (i*size)+j) = 0;
-        }
-    }
-    return mat;
 }

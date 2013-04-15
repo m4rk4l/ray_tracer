@@ -18,7 +18,7 @@ void unitvec(double* vec1, double* vec2);
 void vecprn3(FILE* out, char* desc, double* vec);
 
 /** Matrix functions */
-static double IDENT_MAT[] = {1, 0, 0, 0, 1, 0, 0, 0, 1};
+//static double IDENT_MAT[] = {1, 0, 0, 0, 1, 0, 0, 0, 1};
 
 void mat_cross(double* v1, double* v2, double* v3, size_t size);
 void mat_mul(double* x, double* y, double* z, size_t size);

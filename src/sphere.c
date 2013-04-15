@@ -118,10 +118,10 @@ void sphere_getamb(obj_t *obj, double* amb) {
     amb[0] = obj->material->ambient[0];
     amb[1] = obj->material->ambient[1];
     amb[2] = obj->material->ambient[2];
-/**#ifdef DBG_SPHERE_GETAMB
+#ifdef DBG_SPHERE_GETAMB
     fprintf(stderr, "\namb: (%5.2lf, %5.2lf, %5.2lf)\n",
                     amb[0], amb[1], amb[2]);
-#endif*/
+#endif
 }
 
 /**

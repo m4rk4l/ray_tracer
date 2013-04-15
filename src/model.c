@@ -109,6 +109,7 @@ static obj_t* init_specific_object(FILE* in, int obj_type) {
         case P_SPHERE:
         break;
         case P_PLANE:
+            new_obj = pplane_init(in, obj_type);
         break;
         case PARABOLOID:
         break;
@@ -157,6 +158,7 @@ static void obj_dump(FILE* out, obj_t* obj) {
         case P_SPHERE:
         break;
         case P_PLANE:
+            pplane_dump(out, obj);
         break;
         case PARABOLOID:
         break;

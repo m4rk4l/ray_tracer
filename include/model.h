@@ -5,6 +5,7 @@
 #include "list.h"
 #include "sphere.h"
 #include "plane.h"
+#include "pplane.h"
 
 /** Define a structure for our model and call it model_t */
 typedef struct model_type {
