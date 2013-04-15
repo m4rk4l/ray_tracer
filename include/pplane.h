@@ -14,5 +14,6 @@ static void (*plane_shaders[])(obj_t* obj, double* intensity) = {
 
 obj_t* pplane_init(FILE* in, int objtype);
 void pplane_dump(FILE* out, obj_t* obj);
+void free_pplane(obj_t* obj);
 
 #endif

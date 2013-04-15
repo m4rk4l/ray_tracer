@@ -19,13 +19,16 @@ obj_t* pplane_init(FILE* in, int objtype) {
 
     rc = parse_ints(in, &ndx, "%d", 1);
 
-    if (rc != 0 && ndx >= NUM_SHADERS) {
+    if (rc == 0 || ndx < NUM_SHADERS) {
+        new->getamb = plane_shaders[ndx];// maybe add ndx to plane data
+        new->free_obj = free_pplane;
+    } else {
         fprintf(stderr, "### in pplane_init\n\t"
                         "error with either parsing or ndx is invalid\n");
+        new->free_obj(new);
         new = NULL;
         return new;
     }
-    new->getamb = plane_shaders[ndx];
 
     return new;
 }
@@ -36,6 +39,7 @@ obj_t* pplane_init(FILE* in, int objtype) {
  * @param obj pointer containing info about pplane object.
  */
 void pplane_dump(FILE* out, obj_t* obj) {
+    fprintf(out, "\nDumping object of type pplane");
     plane_dump(out, obj);
     fprintf(out, "\tshader index: \n");// how to get the index?
 }
@@ -44,4 +48,11 @@ void pplane_dump(FILE* out, obj_t* obj) {
  *
  */
 void pplane1_amb(obj_t* obj, double* value) {
+}
+
+/**
+ *
+ */
+void free_pplane(obj_t* obj) {
+    free_plane(obj);
 }

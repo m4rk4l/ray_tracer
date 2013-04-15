@@ -32,15 +32,11 @@ int main(int argc, char** argv) {
     rc = model_init(stdin, model);
     model_dump(stderr, model);
 
-fprintf(stderr, "main.c - rc: %d\n", rc);
     if (rc == 0) {
         make_image(model);
     }
 
-    list_destroy(model->lights);
-    list_destroy(model->scene);
-    free(model->proj);
-    free(model);
+    //model_free(model);
 
     return (EXIT_SUCCESS);
 }

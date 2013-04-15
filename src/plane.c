@@ -36,6 +36,7 @@ obj_t* plane_init(FILE* in, int objtype) {
     obj->getamb = plane_getamb;
     //obj->getdiff = plane_getdiff;
     //obj->getspec = plane_getspec;
+    obj->free_obj = free_plane;
 
     if (rc != 0) {
         fprintf(stderr, "###in plane.c\n\tplane_init: error while parsing"
@@ -147,6 +148,7 @@ static void plane_hitloc(double* base, double* dir, double dist,
  */
 void free_plane(obj_t* obj) {
     plane_t* plane = obj->priv;
+    // free material
     free(plane);
 }
 #endif

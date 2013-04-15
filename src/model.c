@@ -1,11 +1,8 @@
-#ifndef MODEL_C
-#define MODEL_C
-
 #include "model.h"
 
 /** method declarations */
 static obj_t* init_specific_object(FILE* in, int obj_type);
-static void dump_objects(FILE* out, list_t* aList);
+static void dump_or_free(FILE* out, list_t* aList, int option);
 static void obj_dump(FILE* out, obj_t* obj);
 
 /**
@@ -61,19 +58,41 @@ int model_init(FILE* in, model_t* model) {
  */
 void model_dump(FILE* out, model_t* model) {
     //should dump all elements in model.lights
-    dump_objects(out, model->lights);
+    dump_or_free(out, model->lights, DUMP_OBJ);
     //should dump all elements in model.scene
-    dump_objects(out, model->scene);
+    dump_or_free(out, model->scene, DUMP_OBJ);
 }
 
 /**
- * Dump out information for each obj.
+ * frees elements from either the lights or the scene models.
+ * @param model
  */
-static void dump_objects(FILE* out, list_t* aList) {
+void model_free(model_t* model) {
+    dump_or_free(NULL, model->lights, FREE_OBJ);
+    dump_or_free(NULL, model->scene, FREE_OBJ);
+}
+
+/**
+ * Funciton that does dumps information or frees objects in a list.
+ * @param out is an output stream.
+ * @param aList is a list to work with.
+ * @param option is an option to be done.
+ */
+static void dump_or_free(FILE* out, list_t* aList, int option) {
     obj_t* cur = aList->head;
-    while(cur != NULL) {
-        obj_dump(out, cur);
-        cur = cur->next;
+    switch (option) {
+        case DUMP_OBJ:
+            while(cur != NULL) {
+                obj_dump(out, cur);
+                cur = cur->next;
+            }
+            break;
+        case FREE_OBJ:
+            list_destroy(aList);
+            break;
+        default:
+            out = stderr;
+            fprintf(out, "## in model.c\n\tdump_or_free: invalid option\n");
     }
 }
 
@@ -172,4 +191,3 @@ static void obj_dump(FILE* out, obj_t* obj) {
             fprintf(out, "invalid objtype: %d\n", type);
     }
 }
-#endif

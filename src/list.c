@@ -9,6 +9,9 @@
 
 #include "list.h"
 
+/** Function declarations */
+static void free_obj(obj_t* root);
+
 /**
  * "constructor" for a list object, should simulate a linked list.
  *
@@ -43,6 +46,9 @@ void list_add(list_t* list, obj_t* new_obj) {
  *
  */
 void list_destroy(list_t* list) {
+    obj_t* root = list->head;
+    free_obj(root);
+    /**
     obj_t* current = list->head;
     obj_t* temp = NULL;
     while (current != list->tail) {
@@ -56,5 +62,22 @@ void list_destroy(list_t* list) {
     free(list);
 
     return;
+    */
+}
+
+/**
+ *
+ */
+static void free_obj(obj_t* root) {
+    obj_t* cur = root;
+    obj_t* next = root->next;
+    if (next == NULL) {
+        cur->free_obj(cur);
+        free(cur);
+    } else {
+        cur = next;
+        next = cur->next;
+        free_obj(cur);
+    }
 }
 #endif
