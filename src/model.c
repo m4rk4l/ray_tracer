@@ -58,12 +58,9 @@ int model_init(FILE* in, model_t* model) {
  */
 void model_dump(FILE* out, model_t* model) {
     //should dump all elements in model.lights
-fprintf(stderr, "Dumping ligths\n");
     dump_or_free(out, model->lights, DUMP_OBJ);
     //should dump all elements in model.scene
-fprintf(stderr, "Dumping scene\n");
     dump_or_free(out, model->scene, DUMP_OBJ);
-fprintf(stderr, "done Dumping\n");
 }
 
 /**
@@ -71,6 +68,7 @@ fprintf(stderr, "done Dumping\n");
  * @param model
  */
 void model_free(model_t* model) {
+    free_proj(model->proj);
     dump_or_free(NULL, model->lights, FREE_OBJ);
     dump_or_free(NULL, model->scene, FREE_OBJ);
 }
@@ -85,21 +83,14 @@ static void dump_or_free(FILE* out, list_t* aList, int option) {
     obj_t* cur = aList->head;
     switch (option) {
         case DUMP_OBJ:
-fprintf(stderr, "Dumping objects\n");
             while(cur != NULL) {
-fprintf(stderr, "dumping object with id: %d\n", cur->objid);
                 cur->obj_dump(out, cur);
-fprintf(stderr, "moving to next object:\n");
-                if(cur->next != NULL) {
-                    cur = cur->next;
-                } else {
-                    cur = NULL;
-                }
-fprintf(stderr, "next obj is: %p\n", cur);
+                cur = cur->next;
             }
             break;
         case FREE_OBJ:
             list_destroy(aList);
+            free(aList);
             break;
         default:
             fprintf(stderr, "## in model.c\n\tdump_or_free: invalid option\n");

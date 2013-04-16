@@ -1,6 +1,3 @@
-#ifndef PROJECTION_C
-#define PROJECTION_C
-
 #include "projection.h"
 
 
@@ -137,4 +134,9 @@ static int parse_proj(FILE* in, proj_t* proj) {
     return error;
 }
 
-#endif
+/**
+ *
+ */
+void free_proj(proj_t* proj) {
+    free(proj);
+}

@@ -18,8 +18,8 @@ obj_t* pplane_init(FILE* in, int objtype) {
     }
 
     rc = parse_ints(in, &ndx, "%d", 1);
-
-    if (rc == 0 || ndx < NUM_SHADERS) {
+//fprintf(stderr, "ndx: %d\n", ndx);
+    if (rc == 0 && ndx <= NUM_SHADERS) {
         new->getamb = plane_shaders[ndx];// maybe add ndx to plane data
         new->free_obj = free_pplane;
     } else {
@@ -31,17 +31,6 @@ obj_t* pplane_init(FILE* in, int objtype) {
     }
 
     return new;
-}
-
-/**
- * calls plane dump and it prints the pplane index.
- * @param out output stream
- * @param obj pointer containing info about pplane object.
- */
-void pplane_dump(FILE* out, obj_t* obj) {
-    fprintf(out, "\nDumping object of type pplane");
-    plane_dump(out, obj);
-    fprintf(out, "\tshader index: \n");// how to get the index?
 }
 
 /**

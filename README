@@ -37,5 +37,4 @@ NOT WORKING
       see veclib.c/veclib.h
 
 Working on:
-    - freeing sphere objects. need to use valgrind to do some extra checking.
-    - also trying to get procedural planes to work
+    - procedural planes

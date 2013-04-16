@@ -5,9 +5,6 @@
  * @author Marco Anton, Ben Dana
  * @version 4.01.13
  */
-#ifndef MATERIAL_C
-#define MATERIAL_C
-
 #include "material.h"
 
 /**
@@ -40,6 +37,3 @@ void material_dump(FILE* out, material_t* material) {
     material->diffuse[0], material->diffuse[1], material->diffuse[2],
     material->specular[0], material->specular[1], material->specular[2]);
 }
-
-
-#endif

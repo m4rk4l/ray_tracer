@@ -4,11 +4,13 @@
 
 CC=-gcc
 
-#DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
+DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
 #DEBUG += -DDBG_PIX_2_WORLD
 #DEBUG += -DDBG_MAKE_PIXEL -DDBG_CLAMP_INTENSITY
 #DEBUG += -DDBG_HITS_PLANE
 #DEBUG += -DDBG_HITS_SPHERE -DDBG_SPHERE_GETAMB
+
+INPUT = 160 120 < input/pplane.txt 2> runtime.info > img.ppm
 
 # Location of header files
 INCDIR = include/
@@ -17,7 +19,7 @@ OBJDIR = objects/
 # location of c files
 SRCDIR = src/
 
-CFLAGS = -I $(INCDIR) $(DEBUG) -Wall -Wextra
+CFLAGS = -I $(INCDIR) $(DEBUG) -Wall -Wextra -g
 LIBS = -lm
 
 # grab all the c files from the src dir
@@ -78,7 +80,7 @@ clearscr:
 # Run the executable through valgrind
 #---------------------------------------------------------------------------
 valgrind: clean clearscr all
-	valgrind --leak-check=full --malloc-fill=AA --free-fill=BB --track-origins=yes ./$(PROG) 160 120 < input/a04.txt 2> runtime.info > img.ppm
+	valgrind --leak-check=full --malloc-fill=AA --free-fill=BB --track-origins=yes ./$(PROG) $(INPUT) 
 
 
 
@@ -102,4 +104,4 @@ ddd: $(PROG)
 # Just run the executable
 #---------------------------------------------------------------------------
 run: $(PROG)
-	./$(PROG) 160 120 < input/a01.txt 2> runtime.info > img.ppm
+	./$(PROG) $(INPUT)

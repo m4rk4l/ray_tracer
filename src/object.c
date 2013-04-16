@@ -22,6 +22,7 @@
 obj_t* object_init(FILE* in, int objtype) {
     static int id = 0;
     obj_t* obj = Malloc(sizeof(obj_t));
+    obj->next = NULL;
 
     obj->objtype = objtype;
     obj->objid = id++;

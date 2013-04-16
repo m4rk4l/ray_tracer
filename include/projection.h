@@ -13,8 +13,8 @@ typedef struct projection_type {
 } proj_t;
 
 proj_t* projection_init(int argc, char** argv, FILE* input);
-
 void projection_dump(FILE* out, proj_t* proj);
-
 void map_pix_to_world(proj_t* proj, int x, int y, double* world);
+void free_proj(proj_t* proj); 
+
 #endif

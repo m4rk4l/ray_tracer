@@ -19,6 +19,7 @@ obj_t* plane_init(FILE* in, int objtype) {
         fprintf(stderr, "### in plane.c\n\t"
                         "error while parsing for properties on"
                         " plane object\n");
+        free(plane);
         return obj;
     }
 
@@ -28,6 +29,14 @@ obj_t* plane_init(FILE* in, int objtype) {
     rc += parse_doubles(in, plane->normal, "%lf%lf%lf", VECTOR_SIZE);
     rc += parse_doubles(in, plane->point, "%lf%lf%lf", VECTOR_SIZE);
 
+    if (rc != 0) {
+        fprintf(stderr, "###in plane.c\n\tplane_init: error while parsing"
+                        " plane object.\n");
+        free(obj->priv);
+        free(obj);
+        obj = NULL;
+    }
+
     //initialize object specific funcs
     obj->hits = hits_plane;
     obj->getamb = plane_getamb;
@@ -35,12 +44,6 @@ obj_t* plane_init(FILE* in, int objtype) {
     //obj->getspec = plane_getspec;
     obj->obj_dump = plane_dump;
     obj->free_obj = free_plane;
-
-    if (rc != 0) {
-        fprintf(stderr, "###in plane.c\n\tplane_init: error while parsing"
-                        " plane object.\n");
-        obj = NULL;
-    }
 
     return obj;
 }
@@ -145,7 +148,6 @@ static void plane_hitloc(double* base, double* dir, double dist,
  * priv data.
  */
 void free_plane(obj_t* obj) {
-    fprintf(stderr, "freeing plane of id: %d\n", obj->objid);
     plane_t* plane = obj->priv;
     free(obj->material);
     free(plane);

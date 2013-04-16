@@ -37,6 +37,7 @@ int main(int argc, char** argv) {
         make_image(model);
     }
     model_free(model);
+    free(model);
 
     return (EXIT_SUCCESS);
 }

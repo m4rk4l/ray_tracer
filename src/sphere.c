@@ -137,7 +137,6 @@ static void sphere_hitloc(double* base, double* dir, double dist,
  *
  */
 void free_sphere(obj_t* obj) {
-    fprintf(stderr, "freeing sphere of id: %d\n", obj->objid);
     sphere_t* sphere = obj->priv;
     free(obj->material);
     free(sphere);
