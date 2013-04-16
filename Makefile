@@ -4,7 +4,7 @@
 
 CC=-gcc
 
-DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
+#DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
 #DEBUG += -DDBG_PIX_2_WORLD
 #DEBUG += -DDBG_MAKE_PIXEL -DDBG_CLAMP_INTENSITY
 #DEBUG += -DDBG_HITS_PLANE
@@ -77,8 +77,8 @@ clearscr:
 #---------------------------------------------------------------------------
 # Run the executable through valgrind
 #---------------------------------------------------------------------------
-valgrind: $(PROG)
-	valgrind --leak-check=full --malloc-fill=AA --free-fill=BB $(PROG)
+valgrind: clean clearscr all
+	valgrind --leak-check=full --malloc-fill=AA --free-fill=BB --track-origins=yes ./$(PROG) 160 120 < input/a04.txt 2> runtime.info > img.ppm
 
 
 

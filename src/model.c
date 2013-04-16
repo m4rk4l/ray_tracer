@@ -58,9 +58,12 @@ int model_init(FILE* in, model_t* model) {
  */
 void model_dump(FILE* out, model_t* model) {
     //should dump all elements in model.lights
+fprintf(stderr, "Dumping ligths\n");
     dump_or_free(out, model->lights, DUMP_OBJ);
     //should dump all elements in model.scene
+fprintf(stderr, "Dumping scene\n");
     dump_or_free(out, model->scene, DUMP_OBJ);
+fprintf(stderr, "done Dumping\n");
 }
 
 /**
@@ -82,17 +85,24 @@ static void dump_or_free(FILE* out, list_t* aList, int option) {
     obj_t* cur = aList->head;
     switch (option) {
         case DUMP_OBJ:
+fprintf(stderr, "Dumping objects\n");
             while(cur != NULL) {
-                obj_dump(out, cur);
-                cur = cur->next;
+fprintf(stderr, "dumping object with id: %d\n", cur->objid);
+                cur->obj_dump(out, cur);
+fprintf(stderr, "moving to next object:\n");
+                if(cur->next != NULL) {
+                    cur = cur->next;
+                } else {
+                    cur = NULL;
+                }
+fprintf(stderr, "next obj is: %p\n", cur);
             }
             break;
         case FREE_OBJ:
             list_destroy(aList);
             break;
         default:
-            out = stderr;
-            fprintf(out, "## in model.c\n\tdump_or_free: invalid option\n");
+            fprintf(stderr, "## in model.c\n\tdump_or_free: invalid option\n");
     }
 }
 
@@ -143,51 +153,4 @@ static obj_t* init_specific_object(FILE* in, int obj_type) {
                             " defined\n");
     }
     return new_obj;
-}
-
-/**
- * Dumps information related to an object to standard error.
- *
- * @param out is a file to write to.
- * @param obj is the obj that we need info from.
- */
-static void obj_dump(FILE* out, obj_t* obj) {
-    int type = obj->objtype;
-    switch(type) {
-        case LIGHT:
-        break;
-        case SPOTLIGHT:
-        break;
-        case PROJECTOR:
-        break;
-        case SPHERE:
-            sphere_dump(out, obj);
-        break;
-        case PLANE:
-            plane_dump(out, obj);
-        break;
-        case FINITE_PLANE:
-        break;
-        case TILED_PLANE:
-        break;
-        case TEX_PLANE:
-        break;
-        case REF_SPHERE:
-        break;
-        case P_SPHERE:
-        break;
-        case P_PLANE:
-            pplane_dump(out, obj);
-        break;
-        case PARABOLOID:
-        break;
-        case CYLINDER:
-        break;
-        case CONE:
-        break;
-        case HYPERBOLOID:
-        break;
-        default:
-            fprintf(out, "invalid objtype: %d\n", type);
-    }
 }

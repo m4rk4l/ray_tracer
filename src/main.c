@@ -32,11 +32,11 @@ int main(int argc, char** argv) {
     rc = model_init(stdin, model);
     model_dump(stderr, model);
 
+
     if (rc == 0) {
         make_image(model);
     }
-
-    //model_free(model);
+    model_free(model);
 
     return (EXIT_SUCCESS);
 }

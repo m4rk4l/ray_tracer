@@ -1,6 +1,3 @@
-#ifndef PLANE_C
-#define PLANE_C
-
 #include "plane.h"
 
 /** forward declarations */
@@ -36,6 +33,7 @@ obj_t* plane_init(FILE* in, int objtype) {
     obj->getamb = plane_getamb;
     //obj->getdiff = plane_getdiff;
     //obj->getspec = plane_getspec;
+    obj->obj_dump = plane_dump;
     obj->free_obj = free_plane;
 
     if (rc != 0) {
@@ -147,8 +145,8 @@ static void plane_hitloc(double* base, double* dir, double dist,
  * priv data.
  */
 void free_plane(obj_t* obj) {
+    fprintf(stderr, "freeing plane of id: %d\n", obj->objid);
     plane_t* plane = obj->priv;
-    // free material
+    free(obj->material);
     free(plane);
 }
-#endif

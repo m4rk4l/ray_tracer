@@ -54,6 +54,7 @@ typedef struct obj_type {
     double hitloc[VECTOR_SIZE]; /** last hit point */
     double normal[VECTOR_SIZE]; /** normal at hit point */
 
+    void (*obj_dump)(FILE* out, struct obj_type* obj);
     void (*free_obj)(struct obj_type* obj);
 
 } obj_t;

@@ -35,3 +35,7 @@ NOT WORKING
     - working on procedural planes - checkout pplane.h/c
     - need to figure out which formula to use in the projection funciton
       see veclib.c/veclib.h
+
+Working on:
+    - freeing sphere objects. need to use valgrind to do some extra checking.
+    - also trying to get procedural planes to work

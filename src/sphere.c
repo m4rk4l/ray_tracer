@@ -4,9 +4,6 @@
  * @author Marco Anton, Ben Dana
  * @version 4.01.13
  */
-#ifndef SPHERE_C
-#define SPHERE_C
-
 #include "sphere.h"
 
 /** function declarations */
@@ -35,6 +32,8 @@ obj_t* sphere_init(FILE* in, int objtype) {
     obj->priv = sphere;// need to cast to void?
     obj->hits = sphere_hits; //points to function now?
     obj->getamb = sphere_getamb; //points to function now?
+    obj->obj_dump = sphere_dump;
+    obj->free_obj = free_sphere;
 
     rc = parse_ints(in, NULL, "", 0);// before getting plane info we expect
                                   //an empty line.
@@ -133,4 +132,13 @@ static void sphere_hitloc(double* base, double* dir, double dist,
     scale3(dist, dir, scalled);
     sum3(base, scalled, dest);
 }
-#endif
+
+/**
+ *
+ */
+void free_sphere(obj_t* obj) {
+    fprintf(stderr, "freeing sphere of id: %d\n", obj->objid);
+    sphere_t* sphere = obj->priv;
+    free(obj->material);
+    free(sphere);
+}
