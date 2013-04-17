@@ -80,7 +80,8 @@ clearscr:
 # Run the executable through valgrind
 #---------------------------------------------------------------------------
 valgrind: clean clearscr all
-	valgrind --leak-check=full --malloc-fill=AA --free-fill=BB --track-origins=yes ./$(PROG) $(INPUT) 
+	valgrind --leak-check=full --malloc-fill=AA --free-fill=BB\
+	 --track-origins=yes ./$(PROG) $(INPUT) 
 
 
 
