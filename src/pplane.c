@@ -78,7 +78,7 @@ void pplane1_amb(obj_t* obj, double* value) {
     } else {
         value[2] = 0; // zap blue
     }
-    
+    vecprn3(stderr, "value: ", value);
 }
 
 /**
@@ -96,12 +96,12 @@ void pplane2_amb(obj_t* obj, double* value) {
     double t1 = acos(v1);
 
     if(vec[1] < 0) {
-        t1 = 2 * M_PI - t1;
+        t1 = 2 * PI - t1;
     }
 
     value[0] *= (1 + cos(2 * t1));
-    value[1] *= (1 + cos(2 * t1 + 2 * M_PI / 3));
-    value[1] *= (1 + cos(2 * t1 + 4 * M_PI / 3));
+    value[1] *= (1 + cos(2 * t1 + 2 * PI / 3));
+    value[2] *= (1 + cos(2 * t1 + 4 * PI / 3));
 }
 
 /**

@@ -2,7 +2,7 @@
 0 0 20       viewpoint (x, y, z)
 
 20           plane
-5 5 15       r g b ambient 5 5 15
+10 10 10       r g b ambient 5 5 15
 0 0 0        r g b diffuse
 0 0 0        r g b specular
 
