@@ -39,7 +39,8 @@ void list_add(list_t* list, obj_t* new_obj) {
 }
 
 /**
- *
+ * frees elements in a list. recursively xD
+ * @param list a list.
  */
 void list_destroy(list_t* list) {
     obj_t* root = list->head;

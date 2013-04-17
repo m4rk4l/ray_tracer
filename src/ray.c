@@ -1,6 +1,3 @@
-#ifndef RAY_C
-#define RAY_C
-
 #include "ray.h"
 
 /**
@@ -41,7 +38,12 @@ void ray_trace(model_t* model, double* base, double* dir, double* intensity,
 }
 
 /**
- *
+ * finds the colsest object to an object.
+ * @param objs
+ * @param base
+ * @param dir
+ * @param smt
+ * @param mindist
  */
 obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
                                                             double* mindist) {
@@ -62,5 +64,3 @@ obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
     *mindist = shortest;
     return closest;
 }
-
-#endif

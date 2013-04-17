@@ -5,9 +5,6 @@
  * @author Marco Anton, Ben Dana
  * @version 4.01.13
  */
-#ifndef MAIN_C
-#define MAIN_C
-
 #include "model.h"
 #include "image.h"
 
@@ -41,4 +38,3 @@ int main(int argc, char** argv) {
 
     return (EXIT_SUCCESS);
 }
-#endif

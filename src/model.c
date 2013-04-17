@@ -54,7 +54,9 @@ int model_init(FILE* in, model_t* model) {
 }
 
 /**
- *
+ * dumps objects to a stream.
+ * @param out is an output stream
+ * @param model is a pointer to our structure.
  */
 void model_dump(FILE* out, model_t* model) {
     //should dump all elements in model.lights
@@ -65,7 +67,7 @@ void model_dump(FILE* out, model_t* model) {
 
 /**
  * frees elements from either the lights or the scene models.
- * @param model
+ * @param model a pointer to our structure.
  */
 void model_free(model_t* model) {
     free_proj(model->proj);

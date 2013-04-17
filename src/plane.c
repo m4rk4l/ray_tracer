@@ -53,20 +53,16 @@ obj_t* plane_init(FILE* in, int objtype) {
  * @param out is a file to write to.
  * @param obj is the obj that we need info from.
  */
-int plane_dump(FILE* out, obj_t* obj) {
-    int rc = 0;
+void plane_dump(FILE* out, obj_t* obj) {
     plane_t* aplane = (plane_t*)obj->priv;
 
     fprintf(out, "\nDumping object of type Plane:\n");
 
     material_dump(out, obj->material);
     /** object specific */
-    fprintf(out, "\nPlane data:\n\tnormal -");
-    printN(out, aplane->normal);//0 is not used...
-    fprintf(out, "\tpoint - ");
-    printN(out, aplane->point);
-
-    return rc;
+    fprintf(out, "\nPlane data:\n");
+    vecprn3(out, "\tnormal - ", aplane->normal);
+    vecprn3(out, "\tpoint - ", aplane->point);
 }
 
 /**

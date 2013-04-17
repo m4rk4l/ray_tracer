@@ -11,7 +11,7 @@ typedef struct sphere_type {
 
 obj_t* sphere_init(FILE* in, int objtype);
 
-int sphere_dump(FILE* out, obj_t* obj);
+void sphere_dump(FILE* out, obj_t* obj);
 double sphere_hits(double* base, double* dir, struct obj_type* obj);
 void sphere_getamb(obj_t *obj, double* amb);
 void free_sphere(obj_t* sphere);

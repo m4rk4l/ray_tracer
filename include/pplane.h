@@ -3,12 +3,14 @@
 
 #include "plane.h"
 
+void pplane0_amb(obj_t* obj, double* intensity);
 void pplane1_amb(obj_t* obj, double* intensity);
+void pplane2_amb(obj_t* obj, double* intensity);
 
 static void (*plane_shaders[])(obj_t* obj, double* intensity) = {
-    //pplane0_amb,
+    pplane0_amb,
     pplane1_amb,
-    //pplane2_amb
+    pplane2_amb
 };
 #define NUM_SHADERS sizeof(plane_shaders)/sizeof(void*)
 

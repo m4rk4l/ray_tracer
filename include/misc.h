@@ -16,6 +16,4 @@
 int parse_doubles(FILE* in, double* output, char* format, int size);
 int parse_ints(FILE* in, int* output, char* format, int size);
 
-/** gets n values from vec and puts them into a n vector */
-void printN(FILE* out, double* vec);
 #endif

@@ -1,6 +1,3 @@
-#ifndef MISC_C
-#define MISC_C
-
 #include "misc.h"
 
 /**
@@ -69,13 +66,3 @@ int parse_ints(FILE* in, int* output, char* format, int size) {
     
     return ans;
 }
-
-/**
- * prints a vector to out.
- * @param out an output stream.
- * @param vec a pointer tot an array[3] containing the elements of a vector.
- */
-void printN(FILE* out, double* vec) {
-    fprintf(out, "\t%6.3lf\t%6.3lf\t%6.3lf\n", vec[0], vec[1], vec[2]);
-}
-#endif

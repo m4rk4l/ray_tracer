@@ -4,9 +4,6 @@
  * @author Marco Anton, Ben Dana
  * @version 4.01.13
  */
-#ifndef MALLOC_C
-#define MALLOC_C
-
 #include "Malloc.h"
 
 /**
@@ -25,5 +22,3 @@ void* Malloc(size_t size) {
     }
     return malloc_p;
 }
-
-#endif

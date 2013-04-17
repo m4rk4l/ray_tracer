@@ -60,23 +60,21 @@ obj_t* sphere_init(FILE* in, int objtype) {
  * @param obj is the obj that we need info from.
  * @return rc
  */
-int sphere_dump(FILE* out, obj_t* obj) {
-    int rc = 0;
+void sphere_dump(FILE* out, obj_t* obj) {
     sphere_t* asphere = (sphere_t*)obj->priv;
 
     fprintf(out, "\nDumping object of type Sphere:\n");
 
     material_dump(out, obj->material);
     /** object specific */
-    fprintf(out, "\nSphere data:\n\tcenter -");
-    printN(out, asphere->center);
+    fprintf(out, "\nSphere data:\n");
+    vecprn3(out, "\tcenter - ", asphere->center);
     fprintf(out, "\tradius - \t%3.6lf\n", asphere->radius);
-
-    return rc;
 }
 
 /**
  * Checks to see if a ray will his the sphere object.
+ *
  * @param base is the location of the viewer or previous hit.
  * @param dir is a unit vector in the direction of object.
  * @param last_hit obj that reflecteddot3 this ray or NULL.
@@ -124,7 +122,12 @@ void sphere_getamb(obj_t *obj, double* amb) {
 }
 
 /**
+ * gets the hitlocation of a sphere.
  *
+ * @param base base from object
+ * @param dir direction
+ * @param dist minimum distance.
+ * @param dest destination pointer
  */
 static void sphere_hitloc(double* base, double* dir, double dist,
                                                                 double* dest) {
@@ -134,7 +137,9 @@ static void sphere_hitloc(double* base, double* dir, double dist,
 }
 
 /**
+ * frees an object of type sphere
  *
+ * @param obj an object of type sphere
  */
 void free_sphere(obj_t* obj) {
     sphere_t* sphere = obj->priv;

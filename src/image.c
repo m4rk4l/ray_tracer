@@ -4,9 +4,6 @@
  * @author Marco Anton, Ben Dana
  * @version 4.01.13
  */
-#ifndef IMAGE_C
-#define IMAGE_C
-
 #include "image.h"
 
 /** Funciton declarations */ 
@@ -16,6 +13,7 @@ static void clamp_intensity(double min, double max, double* intensity);
 
 /**
  * generates a ppm file
+ * @param model is a pointer to a model to work with.
  */
 void make_image(model_t* model) {
     unsigned char* pixmap = NULL;
@@ -30,12 +28,10 @@ void make_image(model_t* model) {
     for(y = 0; y < height; y++) {
         for(x = 0; x < width; x++) {
 #ifdef DBG_PIX
-    //fprintf(stderr, "\nx, y -  %d %d\n", x, y);
-    //fprintf(stderr, "\nstart end -  %d %d\n", (width - x), (height - y));
     fprintf(stderr, "\nPIX %4d %4d - ", x, y);
 #endif
             make_pixel(model, x, height - y, (pixmap + incrementer));
-            incrementer += VECTOR_SIZE; // c will do array arithmatic above
+            incrementer += VECTOR_SIZE;
         }
     }
 
@@ -87,9 +83,11 @@ void make_pixel(model_t* model, int x, int y, unsigned char* pixval) {
  * vector = W-V. then must find unit vec of this vector.
  */
 static void get_dir(double* view_point, double* world, double* dir) {
-    double vec[3] = {0.0, 0.0, 0.0};
-    diff3(view_point, world, vec);
-    unitvec(vec, dir);
+    diff3(view_point, world, dir);
+    unitvec(dir, dir);
+    //double vec[3] = {0.0, 0.0, 0.0};
+    //diff3(view_point, world, vec);
+    //unitvec(vec, dir);
 }
 
 /**
@@ -115,9 +113,10 @@ static void clamp_intensity(double min, double max, double* intensity) {
 
 /**
  * writes a ppm file to a file.
+ * @param out an output stream
+ * @param width a width of the screen
+ * @param height a height of a screen.
  */
 static void ppm_header(FILE* out, int width, int height) {
     fprintf(out, "P6 %d %d %d\n", width, height, SCALE_RGB);
 }
-
-#endif

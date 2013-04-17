@@ -5,9 +5,6 @@
  * @author Marco Anton, Ben Dana
  * @version 4.01.13
  */
-#ifndef OBJECT_C
-#define OBJECT_C
-
 #include "object.h"
 
 /** Some function definitions */
@@ -41,5 +38,3 @@ obj_t* object_init(FILE* in, int objtype) {
 
     return obj;
 }
-
-#endif
