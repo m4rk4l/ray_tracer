@@ -1,4 +1,4 @@
-#include "pplane.h"
+#include "plane.h"
 
 /**
  * Initiates a plane by calling its parent object.

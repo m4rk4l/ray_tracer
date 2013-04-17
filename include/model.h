@@ -4,7 +4,6 @@
 #include "projection.h"
 #include "list.h"
 #include "sphere.h"
-#include "pplane.h"
 #include "plane.h"
 
 #define FREE_OBJ 1
