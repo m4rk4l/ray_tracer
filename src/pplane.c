@@ -1,4 +1,16 @@
-#include "pplane.h"
+#include "plane.h"
+
+
+static void pplane0_amb(obj_t* obj, double* intensity);
+static void pplane1_amb(obj_t* obj, double* intensity);
+static void pplane2_amb(obj_t* obj, double* intensity);
+
+static void (*plane_shaders[])(obj_t* obj, double* intensity) = {
+    pplane0_amb,
+    pplane1_amb,
+    pplane2_amb
+};
+//#define NUM_SHADERS sizeof(plane_shaders)/sizeof(void*)
 
 /**
  * Initiates a plane by calling its parent object.
@@ -19,7 +31,8 @@ obj_t* pplane_init(FILE* in, int objtype) {
     }
 
     rc = parse_ints(in, &ndx, "%d", 1);
-    if (rc == 0 && ndx <= NUM_SHADERS) { // signed and unsigned warning.
+    int num_shaders = sizeof(plane_shaders)/sizeof(void*);
+    if (rc == 0 && ndx <= num_shaders) {
         plane_t* plane = new->priv;
         plane->plane_priv = NULL;
         //new->priv->plane_priv = NULL;
@@ -58,7 +71,7 @@ void pplane_dump(FILE* out, obj_t* obj) {
  * @param obj is an object whose ambient we are changing.
  * @param value is apointer to an array?
  */
-void pplane0_amb(obj_t* obj, double* value) {
+static void pplane0_amb(obj_t* obj, double* value) {
 }
 
 /**
@@ -66,7 +79,7 @@ void pplane0_amb(obj_t* obj, double* value) {
  * @param obj is an object whose ambient we are changing.
  * @param value is apointer to an array?
  */
-void pplane1_amb(obj_t* obj, double* value) {
+static void pplane1_amb(obj_t* obj, double* value) {
     double vec[3];
     plane_t* p = (plane_t*)obj->priv;
     int isum;
@@ -89,7 +102,7 @@ void pplane1_amb(obj_t* obj, double* value) {
  * @param obj is an object whose ambient we are changing.
  * @param value is apointer to an array?
  */
-void pplane2_amb(obj_t* obj, double* value) {
+static void pplane2_amb(obj_t* obj, double* value) {
     double vec[3];
     plane_t* p = (plane_t*)obj->priv;
 

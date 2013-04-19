@@ -27,4 +27,8 @@ void plane_getspec(...);
 
 void free_plane(obj_t* plane);
 
+/** functions for pplanes  */
+obj_t* pplane_init(FILE* in, int objtype);
+void free_pplane(obj_t* pplane);
+void pplane_dump(FILE* out, obj_t* obj);
 #endif
