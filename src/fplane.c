@@ -54,9 +54,12 @@ obj_t* fplane_init(FILE* in, int objtype) {
 void fplane_dump(FILE* out, obj_t* obj) {
 }
 
-double hits_fplane(double* base, double* dir, obj_t* obj);
+double hits_fplane(double* base, double* dir, obj_t* obj) {
+    return 0;
+}
 
-void fplane_getamb(obj_t* obj, double* amb);
+void fplane_getamb(obj_t* obj, double* amb) {
+}
 
 /**
 void fplane_getdiff(...);
@@ -64,4 +67,5 @@ void fplane_getdiff(...);
 void fplane_getspec(...);
  */
 
-void free_fplane(obj_t* plane);
+void free_fplane(obj_t* plane) {
+}
