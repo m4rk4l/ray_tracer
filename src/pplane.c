@@ -1,4 +1,4 @@
-#include "plane.h"
+#include "pplane.h"
 
 /**
  * Initiates a plane by calling its parent object.
@@ -19,14 +19,17 @@ obj_t* pplane_init(FILE* in, int objtype) {
     }
 
     rc = parse_ints(in, &ndx, "%d", 1);
-    if (rc == 0 && ndx <= NUM_SHADERS) {
+    if (rc == 0 && ndx <= NUM_SHADERS) { // signed and unsigned warning.
+        plane_t* plane = new->priv;
+        plane->plane_priv = NULL;
+        //new->priv->plane_priv = NULL;
         new->obj_dump = pplane_dump;
-        new->getamb = plane_shaders[ndx];// maybe add ndx to plane data
+        new->getamb = plane_shaders[ndx];//
         new->free_obj = free_pplane;
     } else {
         fprintf(stderr, "### in pplane_init\n\t"
                         "error with either parsing or ndx is invalid\n");
-        new->free_obj(new);
+        free_pplane(new); // frees a plane.
         new = NULL;
     }
 
