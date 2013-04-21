@@ -3,7 +3,6 @@
 /** method declarations */
 static obj_t* init_specific_object(FILE* in, int obj_type);
 static void dump_or_free(FILE* out, list_t* aList, int option);
-static void obj_dump(FILE* out, obj_t* obj);
 
 /**
  * initializes the objects in a model. This funciton should parse and create

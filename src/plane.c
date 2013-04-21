@@ -13,16 +13,14 @@ static void plane_hitloc(double* base, double* dir, double dist,
 obj_t* plane_init(FILE* in, int objtype) {
     int rc = 0;
     obj_t* obj = object_init(in, objtype);
-    plane_t* plane = (plane_t*)Malloc(sizeof(plane_t));
 
     if(obj == NULL) {// if object_init fails
         fprintf(stderr, "### in plane.c\n\t"
-                        "error while parsing for properties on"
-                        " plane object\n");
-        free(plane);
+                        "error while initiating object\n");
         return obj;
     }
 
+    plane_t* plane = (plane_t*)Malloc(sizeof(plane_t));
     obj->priv = plane;// need to cast to void?
     rc = parse_ints(in, NULL, "", 0);// before getting plane info we expect
                                      // an empty line.
@@ -32,18 +30,20 @@ obj_t* plane_init(FILE* in, int objtype) {
     if (rc != 0) {
         fprintf(stderr, "###in plane.c\n\tplane_init: error while parsing"
                         " plane object.\n");
-        free(obj->priv);
+        free(plane);
         free(obj);
         obj = NULL;
+    } else {
+        //initialize object specific funcs
+        plane->plane_priv = NULL;
+        obj->hits = hits_plane;
+        obj->getamb = plane_getamb;
+        //obj->getdiff = plane_getdiff;
+        //obj->getspec = plane_getspec;
+        obj->obj_dump = plane_dump;
+        obj->free_obj = free_plane;
     }
 
-    //initialize object specific funcs
-    obj->hits = hits_plane;
-    obj->getamb = plane_getamb;
-    //obj->getdiff = plane_getdiff;
-    //obj->getspec = plane_getspec;
-    obj->obj_dump = plane_dump;
-    obj->free_obj = free_plane;
 
     return obj;
 }
@@ -145,6 +145,9 @@ static void plane_hitloc(double* base, double* dir, double dist,
  */
 void free_plane(obj_t* obj) {
     plane_t* plane = obj->priv;
+    if (plane->plane_priv != NULL) {
+        free(plane->plane_priv);
+    }
     free(obj->material);
     free(plane);
 }

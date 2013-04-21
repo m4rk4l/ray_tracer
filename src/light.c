@@ -4,6 +4,7 @@
 #include "list.h"
 
 int light_init() {
+    return 0;
 }
  /*
  * diffuse_illumination – Comment me
