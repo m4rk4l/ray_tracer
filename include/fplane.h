@@ -1,12 +1,13 @@
 #ifndef FPLANE_H
 #define FPLANE_H
+
 #include "plane.h"
 
 typedef struct fplane_type {
     double xdir[3]; /* x axis direction */
-    double size[2]; /* x axis direction */
-    double rotmat[3][3]; /* x axis direction */
-    double lasthit[3]; /* x axis direction */
+    double size[2]; /* width x height */
+    double rotmat[3][3]; /* rotation matrix */
+    double lasthit[3]; /* used for texures */
 } fplane_t;
 
 obj_t* fplane_init(FILE* in, int objtype);

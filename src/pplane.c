@@ -1,16 +1,15 @@
 #include "plane.h"
 
 
-static void pplane0_amb(obj_t* obj, double* intensity);
+//static void pplane0_amb(obj_t* obj, double* intensity);
 static void pplane1_amb(obj_t* obj, double* intensity);
 static void pplane2_amb(obj_t* obj, double* intensity);
 
 static void (*plane_shaders[])(obj_t* obj, double* intensity) = {
-    pplane0_amb,
+  //  pplane0_amb,
     pplane1_amb,
     pplane2_amb
 };
-//#define NUM_SHADERS sizeof(plane_shaders)/sizeof(void*)
 
 /**
  * Initiates a plane by calling its parent object.
@@ -70,9 +69,9 @@ void pplane_dump(FILE* out, obj_t* obj) {
  * a function that changes the ambient lightning.
  * @param obj is an object whose ambient we are changing.
  * @param value is apointer to an array?
- */
 static void pplane0_amb(obj_t* obj, double* value) {
 }
+ */
 
 /**
  * a function that changes the ambient lightning.
@@ -87,14 +86,15 @@ static void pplane1_amb(obj_t* obj, double* value) {
 
     cpy_vec(value, obj->material->ambient, SIZE);
     diff3(p->point, obj->hitloc, vec);
+
     sum = 1000 + vec[0] * vec[1] * vec[1]/100 + vec[0] * vec[1]/100;
     isum = sum;
+
     if (isum & 1) {
         value[0] = 0; // zap red
     } else {
         value[2] = 0; // zap blue
     }
-    vecprn3(stderr, "value: ", value);
 }
 
 /**

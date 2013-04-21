@@ -128,6 +128,7 @@ static obj_t* init_specific_object(FILE* in, int obj_type) {
         case REF_SPHERE:
         break;
         case P_SPHERE:
+            new_obj = psphere_init(in, obj_type);
         break;
         case P_PLANE:
             new_obj = pplane_init(in, obj_type);

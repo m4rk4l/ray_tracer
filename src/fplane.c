@@ -22,7 +22,6 @@ obj_t* fplane_init(FILE* in, int objtype) {
     fplane_t* fplane = Malloc(sizeof(fplane_t));
     plane_t* plane = obj->priv;
     plane->plane_priv = fplane;
-    //obj->priv->plane_priv = fplane;
 
     rc += parse_ints(in, NULL, "", 0);//parse an empty line
     rc += parse_doubles(in, fplane->xdir, "%lf%lf%lf", VECTOR_SIZE);
@@ -41,6 +40,9 @@ obj_t* fplane_init(FILE* in, int objtype) {
         //obj->getspec = fplane_getspec;
         obj->obj_dump = fplane_dump;
         obj->free_obj = free_fplane;
+        //mat_proj(plane->normal, fplane->xdir, fplane->rotmat);
+        //project xdir onto infinite plane
+        //compute required rotation matrix
     }
 
     return obj;
@@ -52,10 +54,18 @@ obj_t* fplane_init(FILE* in, int objtype) {
  * @param obj is a finite plane object to print.
  */
 void fplane_dump(FILE* out, obj_t* obj) {
+    plane_t* plane = (plane_t*)obj->priv;
+    fplane_t* fplane = (fplane_t*)plane->plane_priv;
+    fprintf(out, "\nDumping object of type  Finite Plane:\n");
+    material_dump(out, obj->material);
+    fprintf(out, "\nPlane data:\n");
+    vecprn3(out, "\tnormal - ", plane->normal);
+    vecprn3(out, "\tpoint - ", plane->point);
+    vecprn3(out, "\tx dir - ", fplane->xdir);
 }
 
 double hits_fplane(double* base, double* dir, obj_t* obj) {
-    return 0;
+    return -1;
 }
 
 void fplane_getamb(obj_t* obj, double* amb) {
