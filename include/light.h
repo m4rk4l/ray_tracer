@@ -8,4 +8,8 @@ typedef struct light_type {
     double center[VECTOR_SIZE];
 } light_t;
 
+obj_t* light_init(FILE* in, int objtype);
+void light_dump(FILE* out, obj_t* obj);
+void free_light(obj_t* obj);
+
 #endif

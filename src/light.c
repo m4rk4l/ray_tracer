@@ -1,5 +1,6 @@
 #include "light.h"
 
-int light_init() {
-    return 0;
+obj_t* light_init(FILE* in, int objtype) {
+    obj_t* light = NULL;
+    return light;
 }

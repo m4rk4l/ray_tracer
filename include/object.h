@@ -48,7 +48,7 @@ typedef struct obj_type {
 
     /** These fields used only in illuminating objects (lights) */
     void (*getemiss)(struct obj_type* obj, double* num);
-    double emmissivity[3]; /** for lights */
+    double emissivity[3]; /** for lights */
     void* priv; /** Private type-dependent data */
 
     double hitloc[VECTOR_SIZE]; /** last hit point */
