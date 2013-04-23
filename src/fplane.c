@@ -41,9 +41,11 @@ obj_t* fplane_init(FILE* in, int objtype) {
         //obj->getspec = fplane_getspec;
         obj->obj_dump = fplane_dump;
         obj->free_obj = free_fplane;
-        //mat_proj(plane->normal, fplane->xdir, fplane->rotmat);
         //project xdir onto infinite plane
+        double temp[VECTOR_SIZE];
+        mat_proj(plane->normal, fplane->xdir, temp, VECTOR_SIZE);
         //compute required rotation matrix
+        mat_rot(plane->normal, temp, fplane->rotmat);
     }
 
     return obj;
@@ -59,7 +61,7 @@ void fplane_dump(FILE* out, obj_t* obj) {
     fplane_t* fplane = (fplane_t*)plane->plane_priv;
     fprintf(out, "\nDumping object of type  Finite Plane:\n");
     material_dump(out, obj->material);
-    fprintf(out, "\nPlane data:\n");
+    fprintf(out, "\nFinite Plane data:\n");
     vecprn3(out, "\tnormal - ", plane->normal);
     vecprn3(out, "\tpoint - ", plane->point);
     vecprn3(out, "\tx dir - ", fplane->xdir);
@@ -67,6 +69,13 @@ void fplane_dump(FILE* out, obj_t* obj) {
                     fplane->size[0], fplane->size[1]);
 }
 
+/**
+ * determines if a ray from base in the direction of dir hits an object
+ * obj.
+ * @param base is the base of the ray
+ * @param dir is the direction of the ray
+ * @param obj is the object we are trying to hit.
+ */
 double hits_fplane(double* base, double* dir, obj_t* obj) {
     return -1;
 }

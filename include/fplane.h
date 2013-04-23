@@ -4,10 +4,10 @@
 #include "plane.h"
 
 typedef struct fplane_type {
-    double xdir[3]; /* x axis direction */
-    double size[2]; /* width x height */
-    double rotmat[3][3]; /* rotation matrix */
-    double lasthit[3]; /* used for texures */
+    double xdir[VECTOR_SIZE]; /* x axis direction */
+    double size[VECTOR_SIZE - 1]; /* width x height */
+    double rotmat[VECTOR_SIZE][VECTOR_SIZE]; /* rotation matrix */
+    double lasthit[VECTOR_SIZE]; /* used for texures */
 } fplane_t;
 
 obj_t* fplane_init(FILE* in, int objtype);
