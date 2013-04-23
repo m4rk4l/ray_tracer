@@ -11,6 +11,7 @@
  * @Version 03/06/2013
  */
 
+static void cpy_vec(double* dest, double* src, int size);
 /**
  * computes the dot product between two vertices.
  * @param vec1 is a vetcor used to compute the dot product.
@@ -183,6 +184,7 @@ void vecprn3(FILE* out, char* desc, double* vec) {
  */
 
 /** Forward Declarations */
+static void cpy_mat(double* dest, double* src, int size);
 static void multiply(int rowA, int colA, int rowB, int colB, double* A,
                                                double* B, double* product);
 
@@ -264,23 +266,17 @@ void mat_vec_mul(double* x, double* y, double* z, size_t size) {
 static void multiply(int rowA, int colA, int rowB, int colB, double* A,
                                                double* B, double* product) {
     int i, j, k;
-//    int count = 1;
     double sum = 0;
-//fprintf(stderr, "-----%d %d %d %d----\n", rowA, colA, rowB, colB);
     for (i = 0; i < rowA; i++) {
         for (j = 0; j < colB; j++) {
             fprintf(stderr, "%d\n", j);
             for (k = 0; k < colA; k++) {
                 sum += *(A + ((i*rowA)+ k)) * *(B + ((k*colB) + j));
-//fprintf(stderr, "%d (A_%d%d * v_%d%d): %5.2lf * %5.2lf = %5.2lf\n",
-//count++, i, k, k, j, *(A + ((i*rowA)+ k)), *(B + ((k*colB) + j)), sum);
             }
             if (rowA == 1 || colA == 1 || rowB == 1 || colB == 1) {
                 product[i] = sum;
-//fprintf(stderr, "prod %d: %5.2lf\n", i, product[i]);
             } else {
                 *(product + ((i*rowA) + j)) = sum;
-//fprintf(stderr, "prod %d, %d: %5.2lf\n", i, j, *(product + ((i*rowA) + j)));
             }
             sum = 0;
         }
@@ -288,11 +284,7 @@ static void multiply(int rowA, int colA, int rowB, int colB, double* A,
 }
 
 /**
- * Transposes a matrix
- * 
- * @param x is a matrix to transpose.
- * @param z is a pointer to put our transposed matrix.
- * @param size size of the square matrix.
+ *
  */
 void mat_xpose(double* x, double* z, size_t size) {
     double A[size*size];
@@ -310,7 +302,6 @@ void mat_xpose(double* x, double* z, size_t size) {
 
 /**
  * Perform a linear transform in four dimensional space
- *
  * by applying a 3x3 matrix to a 3x1 column vector
  * @param y transoform matrix
  * @param x input vector
@@ -322,24 +313,43 @@ void mat_xform(double* y, double* x, double* z, size_t size) {
 
 /**
  * project a vector onto a plane.
- *
  * @param n plane normal.
  * @param v input vector.
  * @param w projected vector.
  */
 void mat_proj(double* n, double* v, double* w, size_t size) {
     double vec[size];
-    scale3(dot3(n, v), n, vec);
+    scale3(dot3(n,v), n, vec);
     diff3(vec, v, w);
 }
 
 /**
+ * generates a rotationla matrix from normal and xdir.
+ * @param normal is a normal vector
+ * @param xdir is a direction vector
+ * @param dest is the rotational matrix.
+ * note that DEST is a MATRIX and not a vector.
+ */
+void mat_rot(double* normal, double* xdir, double* dest) {
+    double v1[SIZE];
+    double v2[SIZE];
+    double u_v1[SIZE];
+    double u_v2[SIZE];
+
+    cpy_vec(v2, xdir, SIZE);
+    cpy_vec(v1, normal, SIZE);
+    unitvec(v1, u_v1);
+    unitvec(v2, u_v2);
+
+    cpy_vec(dest, u_v2, SIZE);
+    cpy_vec((dest + 2*SIZE), u_v1, SIZE);
+    mat_cross(u_v1, u_v2, (dest + SIZE), SIZE);
+}
+
+/**
  * prints an object with a description.
- *
- * @param out is an output stream.
  * @param desc is a description of this matrix
  * @param m is a matrix to print
- * @param size of the square matrix
  */
 void mat_print(FILE* out, char* desc, double* matrix, int size) {
     int i, j;
@@ -350,7 +360,7 @@ void mat_print(FILE* out, char* desc, double* matrix, int size) {
     fprintf(out, "%s", desc);
     for(i = 0; i < size; i++) {
         for(j = 0; j < size; j++) {
-            fprintf(out, "\t%5.2lf", *(mat + (i*size)+j));
+            fprintf(out, "\t%5.3lf", *(mat + (i*size)+j));
         }
         fprintf(out, "\n");
     }
@@ -366,12 +376,11 @@ void mat_print(FILE* out, char* desc, double* matrix, int size) {
  * @param size is the size of our matrix we are assuming a square matrix
  *             in other words, its a size x size matrix.
  */
-void cpy_mat(double* dest, double* src, int size) {
+static void cpy_mat(double* dest, double* src, int size) {
     int i, j;
     for (i = 0; i < size; i++) {
         for(j = 0; j < size; j++) {
             dest[(i*size)+j] = src[(i*size)+j];
-            //*(dest + (i*size)+j) = *(dest + (i*size)+j);
         }
     }
 }
@@ -382,7 +391,7 @@ void cpy_mat(double* dest, double* src, int size) {
  * @param src is a pointer to the source vector.
  * @param size is the size of the vector.
  */
-void cpy_vec(double* dest, double* src, int size) {
+static void cpy_vec(double* dest, double* src, int size) {
     int i;
     for (i = 0; i < size; i++) {
         dest[i] = src[i];

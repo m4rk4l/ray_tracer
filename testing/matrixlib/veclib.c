@@ -187,7 +187,6 @@ void vecprn3(FILE* out, char* desc, double* vec) {
 static void cpy_mat(double* dest, double* src, int size);
 static void multiply(int rowA, int colA, int rowB, int colB, double* A,
                                                double* B, double* product);
-static double* mat_init(double* mat, int size);
 
 /**
  * Finds the cross products of two vectors.
@@ -267,23 +266,17 @@ void mat_vec_mul(double* x, double* y, double* z, size_t size) {
 static void multiply(int rowA, int colA, int rowB, int colB, double* A,
                                                double* B, double* product) {
     int i, j, k;
-    int count = 1;
     double sum = 0;
-//fprintf(stderr, "-----%d %d %d %d----\n", rowA, colA, rowB, colB);
     for (i = 0; i < rowA; i++) {
         for (j = 0; j < colB; j++) {
             fprintf(stderr, "%d\n", j);
             for (k = 0; k < colA; k++) {
                 sum += *(A + ((i*rowA)+ k)) * *(B + ((k*colB) + j));
-//fprintf(stderr, "%d (A_%d%d * v_%d%d): %5.2lf * %5.2lf = %5.2lf\n",
-//count++, i, k, k, j, *(A + ((i*rowA)+ k)), *(B + ((k*colB) + j)), sum);
             }
             if (rowA == 1 || colA == 1 || rowB == 1 || colB == 1) {
                 product[i] = sum;
-//fprintf(stderr, "prod %d: %5.2lf\n", i, product[i]);
             } else {
                 *(product + ((i*rowA) + j)) = sum;
-//fprintf(stderr, "prod %d, %d: %5.2lf\n", i, j, *(product + ((i*rowA) + j)));
             }
             sum = 0;
         }
@@ -325,8 +318,32 @@ void mat_xform(double* y, double* x, double* z, size_t size) {
  * @param w projected vector.
  */
 void mat_proj(double* n, double* v, double* w, size_t size) {
-    //scale3(dot3(n,v), n, w);
-    //diff3(scale3(dot3(n, v), n), v, w);
+    double vec[size];
+    scale3(dot3(n,v), n, vec);
+    diff3(vec, v, w);
+}
+
+/**
+ * generates a rotationla matrix from normal and xdir.
+ * @param normal is a normal vector
+ * @param xdir is a direction vector
+ * @param dest is the rotational matrix.
+ * note that DEST is a MATRIX and not a vector.
+ */
+void mat_rot(double* normal, double* xdir, double* dest) {
+    double v1[SIZE];
+    double v2[SIZE];
+    double u_v1[SIZE];
+    double u_v2[SIZE];
+
+    cpy_vec(v2, xdir, SIZE);
+    cpy_vec(v1, normal, SIZE);
+    unitvec(v1, u_v1);
+    unitvec(v2, u_v2);
+
+    cpy_vec(dest, u_v2, SIZE);
+    cpy_vec((dest + 2*SIZE), u_v1, SIZE);
+    mat_cross(u_v1, u_v2, (dest + SIZE), SIZE);
 }
 
 /**
@@ -343,7 +360,7 @@ void mat_print(FILE* out, char* desc, double* matrix, int size) {
     fprintf(out, "%s", desc);
     for(i = 0; i < size; i++) {
         for(j = 0; j < size; j++) {
-            fprintf(out, "\t%5.2lf", *(mat + (i*size)+j));
+            fprintf(out, "\t%5.3lf", *(mat + (i*size)+j));
         }
         fprintf(out, "\n");
     }
@@ -361,11 +378,9 @@ void mat_print(FILE* out, char* desc, double* matrix, int size) {
  */
 static void cpy_mat(double* dest, double* src, int size) {
     int i, j;
-    int count = 1;
     for (i = 0; i < size; i++) {
         for(j = 0; j < size; j++) {
             dest[(i*size)+j] = src[(i*size)+j];
-            //*(dest + (i*size)+j) = *(dest + (i*size)+j);
         }
     }
 }
@@ -381,19 +396,4 @@ static void cpy_vec(double* dest, double* src, int size) {
     for (i = 0; i < size; i++) {
         dest[i] = src[i];
     }
-}
-
-/**
- * Initializes matrix with its values to 0.
- * @param mat a matrix to initialize
- * @param size the size of the matrix
- */
-static double* mat_init(double* mat, int size) {
-    int i, j;
-    for (i = 0; i < size; i++) {
-        for(j = 0; j < size; j++) {
-            *(mat + (i*size)+j) = 0;
-        }
-    }
-    return mat;
 }
