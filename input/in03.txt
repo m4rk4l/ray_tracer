@@ -1,0 +1,38 @@
+32 24           world x and y dims
+0 0 -10       viewpoint (x, y, -z)
+
+14           plane ----------------------------------------------
+0 0 10       r g b ambient
+0 0 0        r g b diffuse
+0 0 0        r g b specular
+
+0 -1 0         normal
+0 -1 0         point
+
+13            sphere---------------------------------------------
+10 0 0
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0 0 -7        point
+2          
+
+13            sphere---------------------------------------------
+0 10 0
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+2 2 -6.5        point
+1         
+
+13            sphere---------------------------------------------
+0 10 0
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+-2 2 -6.5       point
+1         
+
+10              code for light------------------------------------
+4 4 4           emissivity
+8 6 -2          location

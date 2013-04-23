@@ -1,3 +1,8 @@
+/**
+ * File that contains the logic for infinite planes.
+ * @author Marco Anton
+ * @author Ben Dana
+ */
 #include "plane.h"
 
 /** forward declarations */

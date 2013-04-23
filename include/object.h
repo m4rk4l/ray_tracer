@@ -2,7 +2,8 @@
 #define OBJECT_H
 
 /** object types */
-#define FIRST_TYPE   10
+#define FIRST_TYPE   13
+#define FIRST_LIGHT  10
 #define LIGHT        10
 #define SPOTLIGHT    11
 #define PROJECTOR    12
@@ -18,7 +19,7 @@
 #define CYLINDER     22
 #define CONE         23
 #define HYPERBOLOID  24
-#define LAST_TYPE    25
+#define LAST_TYPE    24
 #define LAST_LIGHT   12
 
 #define TEX_FIT       1
@@ -38,10 +39,8 @@ typedef struct obj_type {
     /** Optional plugins for retrieval of reflectivity */
     /** useful for the ever-popular tiled floor */
     void (*getamb)(struct obj_type* obj, double* num);
-    /**
     void (*getdiff)(struct obj_type* obj, double* num);
     void (*getspec)(struct obj_type* obj, double* num);
-    */
 
     /** Relectivity for reflective objects */
     material_t* material;
