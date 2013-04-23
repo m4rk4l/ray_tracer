@@ -124,6 +124,7 @@ static obj_t* init_specific_object(FILE* in, int obj_type) {
             new_obj = plane_init(in, obj_type);
         break;
         case FINITE_PLANE:
+            new_obj = fplane_init(in, obj_type);
         break;
         case TILED_PLANE:
         break;

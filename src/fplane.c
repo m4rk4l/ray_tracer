@@ -25,6 +25,7 @@ obj_t* fplane_init(FILE* in, int objtype) {
 
     rc += parse_ints(in, NULL, "", 0);//parse an empty line
     rc += parse_doubles(in, fplane->xdir, "%lf%lf%lf", VECTOR_SIZE);
+    unitvec(fplane->xdir, fplane->xdir);
     rc += parse_doubles(in, fplane->size, "%lf%lf", VECTOR_SIZE - 1);
 
     if (rc != 0) {
@@ -62,6 +63,8 @@ void fplane_dump(FILE* out, obj_t* obj) {
     vecprn3(out, "\tnormal - ", plane->normal);
     vecprn3(out, "\tpoint - ", plane->point);
     vecprn3(out, "\tx dir - ", fplane->xdir);
+    fprintf(out, "\tsize -\t\t%5.2lf, %5.2lf\n",
+                    fplane->size[0], fplane->size[1]);
 }
 
 double hits_fplane(double* base, double* dir, obj_t* obj) {

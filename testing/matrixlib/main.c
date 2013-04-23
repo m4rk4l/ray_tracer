@@ -134,7 +134,7 @@ void print_mat_op(double* v1, double* v2, double* v3, size_t size, int op) {
         break;
         case PRINT:
             printf("\tPRINT\n");
-            mat_print(stdout, "\tIdentity Matrix:\n", IDENT_MAT, SIZE);
+            //mat_print(stdout, "\tIdentity Matrix:\n", IDENT_MAT, SIZE);
         break;
         case ROT:
             fprintf(stdout, "\tROTATIONAL MATRIX\n");

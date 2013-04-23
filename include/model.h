@@ -5,6 +5,7 @@
 #include "list.h"
 #include "sphere.h"
 #include "plane.h"
+#include "fplane.h"
 #include "light.h"
 
 #define FREE_OBJ 1

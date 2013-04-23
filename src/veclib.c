@@ -11,7 +11,6 @@
  * @Version 03/06/2013
  */
 
-static void cpy_vec(double* dest, double* src, int size);
 /**
  * computes the dot product between two vertices.
  * @param vec1 is a vetcor used to compute the dot product.
@@ -391,7 +390,7 @@ static void cpy_mat(double* dest, double* src, int size) {
  * @param src is a pointer to the source vector.
  * @param size is the size of the vector.
  */
-static void cpy_vec(double* dest, double* src, int size) {
+void cpy_vec(double* dest, double* src, int size) {
     int i;
     for (i = 0; i < size; i++) {
         dest[i] = src[i];
