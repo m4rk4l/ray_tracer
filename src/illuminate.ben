@@ -2,10 +2,6 @@
 #include "veclib.h"
 #include "model.h"
 #include "list.h"
-
-int light_init() {
-    return 0;
-}
  /*
  * diffuse_illumination – Comment me
  * Parameters: model - pointer to the model structure
@@ -36,19 +32,37 @@ void diffuse_illumination(model_t *model, obj_t *hitobj,
 int process_light(list_t *lst, obj_t *hitobj, obj_t *lobj, 
  double *ivec) {
     double *direction = {0.0, 0.0, 0.0};
-    double *minDistance;
-    diff3(lobj->priv->center, hitobj->hitloc, direction)
+    //distance from A to B = 
+    //diff3(A, B,minDisToObj)
+    //MinDisDouble = length(minDisToObj)
+    double minDisDoubleLight; // variable that holds distance length
+    double *minDisLight; //vector that holds distance vector from obj to light
+    diff3(hitobj, lobj, minDisLight); // calculates difference between main obj and light
+    minDisDoubleLight = length3(minDisLight); // returns distance between main obj and light
+    diff3(lobj->priv->center, hitobj->hitloc, direction) // calculates direction of obj 
     if (0.0 > dot3(direction, obj->normal)) { // check for self-occlusion
         return 0;
     } else {
         void *stub;
         obj_t *closest_object = find_closest_obj(lst, hitobj->hitloc, direction,
-            stub, minDistance);
+            stub, minDisToObj); // exlude hitobj form lst somehow? shouldn't be 
+                                // checking if select object is in way of same object
         if (NULL == *closest_object) { // No object is blocking light source
+            // right now, closest_object might return same object that we are checking occlusion on
+            //TODO: compute the illumination and add to *pix
             return 1;
         } else {
+          double minDisDoubleObj; // variable that holds distance length of closest_object
+          double *minDisObj; //vector that holds distance vector from closest_object to main object
+          diff3(hitobj, min, minDisObj); // calculates difference between main obj and obj
+          minDisDouble = length3(minDisObj); // returns distance between main obj and obj
+          if (minDisObj < minDisLight) { // if true, object is closer than light to main obj
+              return 0;
+          } else {
             // have access to the distance and the object itself
+            //TODO: compute the illumination and add to *pix
             return 0;
+          }
         }
     }
     /*if the hitobj occludes itself 
