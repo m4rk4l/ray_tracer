@@ -21,20 +21,41 @@ obj_t* object_init(FILE* in, int objtype) {
     obj_t* obj = Malloc(sizeof(obj_t));
     obj->next = NULL;
     obj->priv = NULL;
+    int error = 0;
 
     obj->objtype = objtype;
     obj->objid = id++;
 
-    if (!(FIRST_TYPE <= objtype && objtype <= LAST_LIGHT)) {// not a light.
+    if (FIRST_TYPE <= objtype && objtype <= LAST_TYPE) {// not a light.
         obj->material = (material_t*)Malloc(sizeof(material_t));
-        int rc = material_init(in, obj->material); //parse for material info
-        if (rc != 0) {
+        error = material_init(in, obj->material); //parse for material info
+        if (error != 0) {
             fprintf(stderr, "### in object.c\n\t"
-                            "error while parsing for material\n");
+                            "object_init: error while parsing for material\n");
             free(obj->material);
             free(obj);
             obj = NULL;
+        } else {// maybe set all elements of the object to null...
+            obj->next = NULL;
+            obj->priv = NULL;
         }
+
+    } else if (FIRST_LIGHT <= objtype && objtype <= LAST_LIGHT) {// light
+        error += parse_doubles(in, obj->emissivity, "%lf%lf%lf", VECTOR_SIZE);
+        if (error != 0) {
+            fprintf(stderr, "### in object.c\n\t"
+                            "object_init: error while parsing for"
+                            " emisivity.\n");
+            free(obj);
+            obj = NULL;
+        } else {
+            obj->next = NULL;
+            obj->material = NULL;
+            obj->priv = NULL;
+        }
+    } else {
+        fprintf(stderr, "### in object.c\n\tobject_init:"
+                        " invalid object id.\n");
     }
 
     return obj;

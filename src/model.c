@@ -19,7 +19,7 @@ int model_init(FILE* in, model_t* model) {
 
         // if there is an error while parsing the objtype, break out of loop
         if (rc == -1) {
-            fprintf(stdout, "### In model.c\n\tmodel_init: error reading"
+            fprintf(stderr, "### In model.c\n\tmodel_init: error reading"
                             " object type.\n");
             break;
         } else if (rc == -2) {
@@ -38,10 +38,13 @@ int model_init(FILE* in, model_t* model) {
         }
 
         // otherwise, add it to a list depending on the objtype
-        if (FIRST_TYPE <= objtype && objtype <= LAST_LIGHT) { // light
+        if (FIRST_LIGHT <= objtype && objtype <= LAST_LIGHT) { // light
             list_add(model->lights, newobj);
-        } else { // scene
+        } else if (FIRST_TYPE <= objtype && objtype <= LAST_TYPE) { // scene
             list_add(model->scene, newobj);
+        } else {
+            fprintf(stderr, "### in model.c\n\t"
+                            "adding to an unknown location...\n");
         }
     }
 
@@ -108,6 +111,7 @@ static obj_t* init_specific_object(FILE* in, int obj_type) {
     obj_t* new_obj = NULL;
     switch(obj_type) {
         case LIGHT:
+            new_obj = light_init(in, obj_type);
         break;
         case SPOTLIGHT:
         break;
@@ -120,6 +124,7 @@ static obj_t* init_specific_object(FILE* in, int obj_type) {
             new_obj = plane_init(in, obj_type);
         break;
         case FINITE_PLANE:
+            new_obj = fplane_init(in, obj_type);
         break;
         case TILED_PLANE:
         break;
@@ -128,6 +133,7 @@ static obj_t* init_specific_object(FILE* in, int obj_type) {
         case REF_SPHERE:
         break;
         case P_SPHERE:
+            new_obj = psphere_init(in, obj_type);
         break;
         case P_PLANE:
             new_obj = pplane_init(in, obj_type);

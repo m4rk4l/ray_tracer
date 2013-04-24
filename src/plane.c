@@ -1,3 +1,8 @@
+/**
+ * File that contains the logic for infinite planes.
+ * @author Marco Anton
+ * @author Ben Dana
+ */
 #include "plane.h"
 
 /** forward declarations */
@@ -38,8 +43,8 @@ obj_t* plane_init(FILE* in, int objtype) {
         plane->plane_priv = NULL;
         obj->hits = hits_plane;
         obj->getamb = plane_getamb;
-        //obj->getdiff = plane_getdiff;
-        //obj->getspec = plane_getspec;
+        obj->getdiff = plane_getdiff;
+        obj->getspec = plane_getspec;
         obj->obj_dump = plane_dump;
         obj->free_obj = free_plane;
     }
@@ -125,6 +130,28 @@ void plane_getamb(obj_t* obj, double* amb) {
 }
 
 /**
+ * gets the diffuse light from an object and puts it into diffuse.
+ * @param obj a pointer to an object.
+ * @param diffuse a pointer to the return value.
+ */
+void plane_getdiff(obj_t* obj, double* diffuse) {
+    diffuse[0] = obj->material->diffuse[0];
+    diffuse[1] = obj->material->diffuse[1];
+    diffuse[2] = obj->material->diffuse[2];
+}
+
+/**
+ * gets the diffuse light from an object and puts it into diffuse.
+ * @param obj a pointer to an object.
+ * @param diffuse a pointer to the return value.
+ */
+void plane_getspec(obj_t* obj, double* specular) {
+    specular[0] = obj->material->specular[0];
+    specular[1] = obj->material->specular[1];
+    specular[2] = obj->material->specular[2];
+}
+
+/**
  * finds the hit location given by H = base + dist(dir).
  * @param base represents the start of the ray.
  * @param dir is a unit vector representing the direction of base.
@@ -145,9 +172,6 @@ static void plane_hitloc(double* base, double* dir, double dist,
  */
 void free_plane(obj_t* obj) {
     plane_t* plane = obj->priv;
-    if (plane->plane_priv != NULL) {
-        free(plane->plane_priv);
-    }
     free(obj->material);
     free(plane);
 }

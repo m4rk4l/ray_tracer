@@ -1,0 +1,17 @@
+8 6           world x and y dims
+0 0 3         viewpoint (x, y, z)
+
+14            plane
+0 0 0         r g b ambient
+10 10 10      r g b diffuse
+0 0 0         r g b specular
+
+0 1  0        normal
+0 -4 0        point
+
+
+10            light
+7 7 7         emissivity
+0 0 -15        location
+
+

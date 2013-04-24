@@ -13,4 +13,7 @@ void diffuse_illumination(model_t *model, obj_t *hitobj,
 
 int process_light(list_t *lst, obj_t *hitobj, obj_t *lobj, 
  double *ivec);
+obj_t* light_init(FILE* in, int objtype);
+void light_dump(FILE* out, obj_t* obj);
+void free_light(obj_t* obj);
 #endif

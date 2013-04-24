@@ -22,10 +22,10 @@ obj_t* fplane_init(FILE* in, int objtype) {
     fplane_t* fplane = Malloc(sizeof(fplane_t));
     plane_t* plane = obj->priv;
     plane->plane_priv = fplane;
-    //obj->priv->plane_priv = fplane;
 
     rc += parse_ints(in, NULL, "", 0);//parse an empty line
     rc += parse_doubles(in, fplane->xdir, "%lf%lf%lf", VECTOR_SIZE);
+    unitvec(fplane->xdir, fplane->xdir);
     rc += parse_doubles(in, fplane->size, "%lf%lf", VECTOR_SIZE - 1);
 
     if (rc != 0) {
@@ -36,11 +36,13 @@ obj_t* fplane_init(FILE* in, int objtype) {
         obj = NULL;
     } else {
         obj->hits = hits_fplane;
-        obj->getamb = fplane_getamb;
-        //obj->getdiff = fplane_getdiff;
-        //obj->getspec = fplane_getspec;
         obj->obj_dump = fplane_dump;
         obj->free_obj = free_fplane;
+        //project xdir onto infinite plane
+        double temp[VECTOR_SIZE];
+        mat_proj(plane->normal, fplane->xdir, temp, VECTOR_SIZE);
+        //compute required rotation matrix
+        mat_rot(plane->normal, temp, *(fplane->rotmat));
     }
 
     return obj;
@@ -52,20 +54,56 @@ obj_t* fplane_init(FILE* in, int objtype) {
  * @param obj is a finite plane object to print.
  */
 void fplane_dump(FILE* out, obj_t* obj) {
-}
-
-double hits_fplane(double* base, double* dir, obj_t* obj) {
-    return 0;
-}
-
-void fplane_getamb(obj_t* obj, double* amb) {
+    plane_t* plane = (plane_t*)obj->priv;
+    fplane_t* fplane = (fplane_t*)plane->plane_priv;
+    fprintf(out, "\nDumping object of type  Finite Plane:\n");
+    material_dump(out, obj->material);
+    fprintf(out, "\nFinite Plane data:\n");
+    vecprn3(out, "\tnormal - ", plane->normal);
+    vecprn3(out, "\tpoint - ", plane->point);
+    vecprn3(out, "\tx dir - ", fplane->xdir);
+    fprintf(out, "\tsize -\t\t%5.2lf, %5.2lf\n",
+                    fplane->size[0], fplane->size[1]);
 }
 
 /**
-void fplane_getdiff(...);
-
-void fplane_getspec(...);
+ * determines if a ray from base in the direction of dir hits an object
+ * obj.
+ * @param base is the base of the ray
+ * @param dir is the direction of the ray
+ * @param obj is the object we are trying to hit.
  */
+double hits_fplane(double* base, double* dir, obj_t* obj) {
+    double t;
+    double newhit[SIZE];
+    plane_t* plane = obj->priv;
+    fplane_t* fplane = plane->plane_priv;
+    t = hits_plane(base, dir, obj);
+    if (t > 0) {
+        //transform coordinates
+        diff3(plane->point, obj->hitloc, newhit);
+        mat_xform(*(fplane->rotmat), newhit, newhit, VECTOR_SIZE);
+        //do tests.
+        if ((newhit[0] > fplane->size[0]) || (newhit[0] < 0.0)) {
+            t = -1;// return miss
+        }
+        if ((newhit[1] > fplane->size[1]) || (newhit[1]) < 0.0) {
+            t = -1;// return miss
+        }
+    }
+    return t;
+}
 
-void free_fplane(obj_t* plane) {
+/**
+ * frees a fplane by freeing the memory allocated in obj->priv->plane_priv and
+ * calling plane's free function.
+ * @param obj is an object to free.
+ */
+void free_fplane(obj_t* obj) {
+    plane_t* plane = obj->priv;
+    fplane_t* fplane = plane->plane_priv;
+    if (fplane != NULL) {
+        free(fplane);
+    }
+    free_plane(obj);
 }

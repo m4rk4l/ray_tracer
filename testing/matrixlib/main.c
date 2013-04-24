@@ -10,6 +10,7 @@
 #define XFORM 3
 #define PROJ 4
 #define PRINT 5
+#define ROT 6
 
 /** Some func delarations */
 void tests();
@@ -32,8 +33,8 @@ void tests() {
     print_mat_op(NULL, NULL, NULL, SIZE, PRINT);
 
     printf("\n-----------------------Normal Test:------------------------\n");
-    double vec1[] = {1, 2, 3};
-    double vec2[] = {4, 5, 6};
+    double vec1[] = {1, 1, 1};
+    double vec2[] = {1, 0, -1};
     double vec3[] = {0, 0, 0};
     double mat1[] = {1,2,3, 4,5,6, 7,8,9};
     double mat2[] = {0,1,2, 3,4,5, 6,7,8};
@@ -43,7 +44,8 @@ void tests() {
     print_mat_op(mat1, mat2, mat3, SIZE, MULT);
     print_mat_op(mat1, NULL, mat3, SIZE, XPOSE);
     print_mat_op(mat1, vec1, vec3, SIZE, XFORM);
-
+    print_mat_op(vec1, vec2, mat3, SIZE, ROT);
+/**
     printf("\n---------------------Same Pointer Test:--------------------\n");
     print_mat_op(vec1, vec1, vec1, SIZE, CROSS);
     vec1[0]=1; vec1[1]=2; vec1[2]=3;
@@ -92,6 +94,7 @@ void tests() {
     mat1[0]=2; mat1[1]=1; mat1[2]=2; mat1[3]=8; mat1[4]=7; mat1[5]=3;
     mat1[6]=8; mat1[7]=4; mat1[8]=7;
     print_mat_op(mat1, vec1, vec3, SIZE, XFORM);
+*/
 }
 
 /**
@@ -131,7 +134,14 @@ void print_mat_op(double* v1, double* v2, double* v3, size_t size, int op) {
         break;
         case PRINT:
             printf("\tPRINT\n");
-            mat_print(stdout, "\tIdentity Matrix:\n", IDENT_MAT, SIZE);
+            //mat_print(stdout, "\tIdentity Matrix:\n", IDENT_MAT, SIZE);
+        break;
+        case ROT:
+            fprintf(stdout, "\tROTATIONAL MATRIX\n");
+            vecprn3(stdout, "\tnormal ", v1);
+            vecprn3(stdout, "\txdir: ", v2);
+            mat_rot(v1, v2, v3);
+            mat_print(stdout, "\trotation\n", v3, SIZE);
         break;
         default:
             printf("Invalid operation.\n");

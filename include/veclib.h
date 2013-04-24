@@ -28,5 +28,5 @@ void mat_xpose(double* x, double* z, size_t size);
 void mat_xform(double* y, double* x, double* z, size_t size);
 void mat_proj(double* n, double* v, double* w, size_t size);
 void mat_print(FILE* out, char* desc, double* matrix, int size);
-void cpy_mat(double* dest, double* src, int size);
+void mat_rot(double* normal, double* xdir, double* dest);
 #endif

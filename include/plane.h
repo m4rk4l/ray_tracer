@@ -19,11 +19,9 @@ double hits_plane(double* base, double* dir, obj_t* obj);
 
 void plane_getamb(obj_t* obj, double* amb);
 
-/**
-void plane_getdiff(...);
+void plane_getdiff(obj_t* obj, double* diffuse);
 
-void plane_getspec(...);
- */
+void plane_getspec(obj_t* obj, double* specular);
 
 void free_plane(obj_t* plane);
 
