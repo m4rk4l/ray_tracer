@@ -14,6 +14,8 @@ obj_t* sphere_init(FILE* in, int objtype);
 void sphere_dump(FILE* out, obj_t* obj);
 double sphere_hits(double* base, double* dir, struct obj_type* obj);
 void sphere_getamb(obj_t *obj, double* amb);
+void sphere_getdiff(obj_t *obj, double* diff);
+void sphere_getspec(obj_t *obj, double* spec);
 void free_sphere(obj_t* sphere);
 
 /** functions for pspheres  */

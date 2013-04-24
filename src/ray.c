@@ -27,6 +27,9 @@ void ray_trace(model_t* model, double* base, double* dir, double* intensity,
     total_dist += mindist;
     //set intensity to the ambient reflectivity of closest
     closest->getamb(closest, intensity);
+    //TODO: add diffuse reflectivity of the object ath the hitpoint to the
+    //intensity vector.
+    diffuse_illumination(model, closest, intensity);
     //divide intensity by total_dist
     double factor = 1/total_dist;
     double temp_intensity[3] = {intensity[0], intensity[1], intensity[2]};

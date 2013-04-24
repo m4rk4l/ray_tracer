@@ -19,7 +19,7 @@ int model_init(FILE* in, model_t* model) {
 
         // if there is an error while parsing the objtype, break out of loop
         if (rc == -1) {
-            fprintf(stdout, "### In model.c\n\tmodel_init: error reading"
+            fprintf(stderr, "### In model.c\n\tmodel_init: error reading"
                             " object type.\n");
             break;
         } else if (rc == -2) {

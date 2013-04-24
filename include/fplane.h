@@ -18,12 +18,6 @@ double hits_fplane(double* base, double* dir, obj_t* obj);
 
 void fplane_getamb(obj_t* obj, double* amb);
 
-/**
-void fplane_getdiff(...);
-
-void fplane_getspec(...);
- */
-
 void free_fplane(obj_t* plane);
 
 #endif

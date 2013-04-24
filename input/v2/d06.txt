@@ -1,0 +1,126 @@
+8 6           world x and y dims
+0 0 3         viewpoint (x, y, z)
+
+10
+100 200 0      color (emiss)
+0 4 -60        position (thanks to Brad Proctor!)
+
+14            plane
+2 2 2         r g b ambient
+170 60 30      r g b diffuse
+0 0 0         r g b specular
+
+0 0  1        normal
+0 0 -70        point
+
+14            plane
+1 1 1         r g b ambient
+2 6 2         r g b diffuse
+0 0 0         r g b specular
+
+0 1  0        normal
+0 -4 0        point
+
+10            light
+15 15 15      emissivity
+10 10 2       location
+
+15            finite plane
+0 0 0         r g b ambient
+0 0 0         r g b diffuse
+0 0 0         r g b specular
+
+0  1 	0     normal
+-5 -3.999 0   point
+1 0.4    0    x direction
+10 75          size
+
+15            finite plane
+0 0 0         r g b ambient
+9 9 0         r g b diffuse
+0 0 0         r g b specular
+
+0  1    0     normal
+-.05 -3.9989 -1.3   point
+1 0.4    0    x direction
+.6 1.25       size
+
+15            finite plane
+0 0 0         r g b ambient
+9 9 0         r g b diffuse
+0 0 0         r g b specular
+
+0  1    0     normal
+-.05 -3.99899 -5   point
+1 0.4    0    x direction
+.6 2          size
+
+15            finite plane
+0 0 0         r g b ambient
+9 9 0         r g b diffuse
+0 0 0         r g b specular
+
+0  1    0     normal
+-.05 -3.99899 -10   point
+1 0.4    0    x direction
+.6 2          size
+
+15            finite plane
+0 0 0         r g b ambient
+9 9 0         r g b diffuse
+0 0 0         r g b specular
+
+0  1    0     normal
+-.05 -3.99899 -15   point
+1 0.4    0    x direction
+.6 2          size
+
+15 	      finite plane 
+0 0 0 	      r g b ambient 
+9 9 0 	      r g b diffuse 
+0 0 0 	      r g b specular 
+
+0 1 0 	      normal 
+-.05 -3.99899 -20 point 
+1 0.4 0       x direction 
+.6 2 	      size
+
+15 	      finite plane 
+0 0 0         r g b ambient 
+9 9 0         r g b diffuse 
+0 0 0  	      r g b specular
+
+0 1 0 	      normal 
+-.05 -3.99899 -25 point 
+1 0.4 0       x direction 
+.6 2 size
+
+15 	      finite plane 
+0 0 0         r g b ambient 
+9 9 0         r g b diffuse 
+0 0 0  	      r g b specular
+
+0 1 0 	      normal 
+-.05 -3.99899 -33 point 
+1 0.4 0       x direction 
+.6 2 size
+
+15 	      finite plane 
+0 0 0         r g b ambient 
+9 9 0         r g b diffuse 
+0 0 0  	      r g b specular
+
+0 1 0 	      normal 
+-.05 -3.99899 -40 point 
+1 0.4 0       x direction 
+.6 2 size
+
+15 	      finite plane 
+0 0 0         r g b ambient 
+4 4 0         r g b diffuse 
+0 0 0  	      r g b specular
+
+0 1 0 	      normal 
+-.05 -3.99899 -50 point 
+1 0.4 0       x direction 
+.6 2 size

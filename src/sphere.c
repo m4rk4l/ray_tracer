@@ -24,30 +24,33 @@ obj_t* sphere_init(FILE* in, int objtype) {
 
     if(obj == NULL) {// if object_init fails
         fprintf(stderr, "### in sphere.c\n\t"
-                        "error while parsing for properties on"
+                        "sphere_init: error while parsing for properties on"
                         " sphere object\n");
+        free(sphere);
+        free(obj);
+        obj = NULL;
         return obj;
     }
 
-    obj->priv = sphere;// need to cast to void?
-    obj->hits = sphere_hits; //points to function now?
-    obj->getamb = sphere_getamb; //points to function now?
-    obj->obj_dump = sphere_dump;
-    obj->free_obj = free_sphere;
-
-    rc = parse_ints(in, NULL, "", 0);// before getting plane info we expect
-                                  //an empty line.
+    rc = parse_ints(in, NULL, "", 0);// empty line
     rc += parse_doubles(in, sphere->center, "%lf%lf%lf", VECTOR_SIZE);
     rc += parse_doubles(in, &radius, "%lf", 1);
 
-    if (radius != -1) {
+    if (radius != -1 && rc == 0) {
         sphere->radius = radius;
-    }
-
-    if (rc != 0) {
-        fprintf(stderr, "###in sphere.c\n\t"\
+        obj->priv = sphere;
+        obj->hits = sphere_hits;
+        obj->getamb = sphere_getamb;
+        obj->getdiff = sphere_getdiff;
+        obj->getspec = sphere_getspec;
+        obj->obj_dump = sphere_dump;
+        obj->free_obj = free_sphere;
+    } else {
+        fprintf(stderr, "###in sphere.c\n\t"
                         "sphere_init: error while parsing"
                         " sphere object.\n");
+        free(sphere);
+        free(obj);
         obj = NULL;
     }
 
@@ -107,7 +110,6 @@ double sphere_hits(double* base, double* dir, obj_t* obj) {
 
 /**
  * This fuction gets the ambience of the 'sphere' obj.
- *
  * @param obj is the object in question.
  * @param amb is the destination for the ambience information.
  */
@@ -115,10 +117,28 @@ void sphere_getamb(obj_t *obj, double* amb) {
     amb[0] = obj->material->ambient[0];
     amb[1] = obj->material->ambient[1];
     amb[2] = obj->material->ambient[2];
-#ifdef DBG_SPHERE_GETAMB
-    fprintf(stderr, "\namb: (%5.2lf, %5.2lf, %5.2lf)\n",
-                    amb[0], amb[1], amb[2]);
-#endif
+}
+
+/**
+ * This fuction gets the diffuse of the 'sphere' obj.
+ * @param obj is the object in question.
+ * @param amb is the destination for the diffuse information.
+ */
+void sphere_getdiff(obj_t *obj, double* diff) {
+    diff[0] = obj->material->diffuse[0];
+    diff[1] = obj->material->diffuse[1];
+    diff[2] = obj->material->diffuse[2];
+}
+
+/**
+ * This fuction gets the specular of the 'sphere' obj.
+ * @param obj is the object in question.
+ * @param amb is the destination for the specular information.
+ */
+void sphere_getspec(obj_t *obj, double* spec) {
+    spec[0] = obj->material->specular[0];
+    spec[1] = obj->material->specular[1];
+    spec[2] = obj->material->specular[2];
 }
 
 /**

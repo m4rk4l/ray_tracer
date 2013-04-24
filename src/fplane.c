@@ -36,16 +36,13 @@ obj_t* fplane_init(FILE* in, int objtype) {
         obj = NULL;
     } else {
         obj->hits = hits_fplane;
-        obj->getamb = fplane_getamb;
-        //obj->getdiff = fplane_getdiff;
-        //obj->getspec = fplane_getspec;
         obj->obj_dump = fplane_dump;
         obj->free_obj = free_fplane;
         //project xdir onto infinite plane
         double temp[VECTOR_SIZE];
         mat_proj(plane->normal, fplane->xdir, temp, VECTOR_SIZE);
         //compute required rotation matrix
-        mat_rot(plane->normal, temp, fplane->rotmat);
+        mat_rot(plane->normal, temp, *(fplane->rotmat));
     }
 
     return obj;
@@ -77,17 +74,36 @@ void fplane_dump(FILE* out, obj_t* obj) {
  * @param obj is the object we are trying to hit.
  */
 double hits_fplane(double* base, double* dir, obj_t* obj) {
-    return -1;
-}
-
-void fplane_getamb(obj_t* obj, double* amb) {
+    double t;
+    double newhit[SIZE];
+    plane_t* plane = obj->priv;
+    fplane_t* fplane = plane->plane_priv;
+    t = hits_plane(base, dir, obj);
+    if (t > 0) {
+        //transform coordinates
+        diff3(plane->point, obj->hitloc, newhit);
+        mat_xform(*(fplane->rotmat), newhit, newhit, VECTOR_SIZE);
+        //do tests.
+        if ((newhit[0] > fplane->size[0]) || (newhit[0] < 0.0)) {
+            t = -1;// return miss
+        }
+        if ((newhit[1] > fplane->size[1]) || (newhit[1]) < 0.0) {
+            t = -1;// return miss
+        }
+    }
+    return t;
 }
 
 /**
-void fplane_getdiff(...);
-
-void fplane_getspec(...);
+ * frees a fplane by freeing the memory allocated in obj->priv->plane_priv and
+ * calling plane's free function.
+ * @param obj is an object to free.
  */
-
-void free_fplane(obj_t* plane) {
+void free_fplane(obj_t* obj) {
+    plane_t* plane = obj->priv;
+    fplane_t* fplane = plane->plane_priv;
+    if (fplane != NULL) {
+        free(fplane);
+    }
+    free_plane(obj);
 }

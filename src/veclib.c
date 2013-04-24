@@ -221,12 +221,7 @@ void mat_mul(double* x, double* y, double* z, size_t size) {
     cpy_mat(A, x, size);
     cpy_mat(B, y, size);
 
-//fprintf(stderr, "Matrix Multiplication\n");
-//mat_print(stderr, "A: ", A, size);
-//mat_print(stderr, "B: ", B, size);
-
     multiply(size, size, size, size, A, B, z);
-//mat_print(stderr, "z: ", z, size);
 }
 
 /**
@@ -242,10 +237,6 @@ void mat_vec_mul(double* x, double* y, double* z, size_t size) {
 
     cpy_mat(A, x, size);
     cpy_vec(v, y, size);
-
-//fprintf(stderr, "Matrix vector multiplication\n");
-//mat_print(stderr, "A: ", A, size);
-//vecprn3(stderr, "v: ", v);
 
     multiply(size, size, size, 1, A, v, z);
 }
@@ -268,7 +259,6 @@ static void multiply(int rowA, int colA, int rowB, int colB, double* A,
     double sum = 0;
     for (i = 0; i < rowA; i++) {
         for (j = 0; j < colB; j++) {
-            fprintf(stderr, "%d\n", j);
             for (k = 0; k < colA; k++) {
                 sum += *(A + ((i*rowA)+ k)) * *(B + ((k*colB) + j));
             }
