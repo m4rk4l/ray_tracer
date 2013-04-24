@@ -1,7 +1,4 @@
 #include "light.h"
-#include "veclib.h"
-#include "model.h"
-#include "list.h"
 
 /**
  * Initiates a light object.

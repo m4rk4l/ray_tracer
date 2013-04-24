@@ -10,7 +10,7 @@ CC=-gcc
 #DEBUG += -DDBG_HITS_PLANE
 #DEBUG += -DDBG_HITS_SPHERE -DDBG_SPHERE_GETAMB
 
-INPUT = 640 480 < input/v2/d05.txt 2> runtime.info > img.ppm
+INPUT = 640 480 < input/psphere.txt 2> runtime.info > img.ppm
 
 # Location of header files
 INCDIR = include/

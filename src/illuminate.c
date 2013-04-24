@@ -30,7 +30,11 @@ void diffuse_illumination(model_t* model, obj_t* hitobj, double* intensity) {
  */
 int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
     int ans = -1;
-
+    double dir[3];
+    light_t* light = lobj->priv;
+    diff3(light->center, hitobj->hitloc, dir);
+    //if (0 > dot3(dir, obj->normal)) {
+    //}
     return ans;
     //if hitobj occludes itself
     //  return
