@@ -17,8 +17,6 @@
 0  0  1      normal
 0  0  -12    point
 
-
-
 15           finite plane
 0  0  0      rgb ambient
 3  0  9      rgb diffuse
@@ -26,6 +24,7 @@
 
 3  0  4      normal
 0  -3  -4    point
+
 4  0  -7     x direction
 5  5         size
 
@@ -59,8 +58,6 @@
 0.5 1.8 -7.5 center
 0.5          radius
 
-
-
 13           sphere top 2
 7  4  2      rgb ambient
 4  4  0      rgb diffuse
@@ -68,7 +65,6 @@
 
 -2 0.333 -6.667 center
 0.5          radius
-
 
 13           sphere bottom 2
 7  4  2      rgb ambient
@@ -78,7 +74,6 @@
 -1 -1.333 -5.333 center
 0.5          radius
 
-
 13           sphere middle 3
 7 4 2      rgb ambient
 4  4  0      rgb diffuse
@@ -86,7 +81,6 @@
 
 2 -0.5 -5.5   center
 0.5          radius
-
 
 13           sphere
 7  4  2      rgb ambient
