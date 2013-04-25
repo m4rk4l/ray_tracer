@@ -8,6 +8,7 @@
 
 /** function declarations */
 static void sphere_hitloc(double* base, double* dir, double dist,double* dest);
+static void sphere_normal(double* hitloc, double* center, double* normal);
 
 /**
  * This fuction initializes a sphere object.
@@ -103,6 +104,7 @@ double sphere_hits(double* base, double* dir, obj_t* obj) {
     if (disc >= ALMOST_ZERO) {
         dist = ((-1 *b) - sqrt(disc))/(2*a);
         sphere_hitloc(base, dir, dist, obj->hitloc);
+        sphere_normal(obj->hitloc, sphere->center, obj->normal);
     }
 
     return dist;
@@ -154,6 +156,18 @@ static void sphere_hitloc(double* base, double* dir, double dist,
     double scalled[3];
     scale3(dist, dir, scalled);
     sum3(base, scalled, dest);
+}
+
+/**
+ * sets a sphere object normal given the hit location and center of the sphere
+ * and places it into the destination vector.
+ * @param hitloc is a hitlocation.
+ * @param center is the center of the sphere.
+ * @param dest is where we are to put the normal
+ */
+static void sphere_normal(double* hitloc, double* center, double* normal) {
+    diff3(center, hitloc, normal);
+    unitvec(normal, normal);
 }
 
 /**

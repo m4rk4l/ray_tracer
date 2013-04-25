@@ -9,9 +9,7 @@
 0 1  0        normal
 0 -4 0        point
 
-
 10            light
 60 60 60         emissivity
 0 0 -15        location
-
 

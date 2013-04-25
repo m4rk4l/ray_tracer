@@ -11,5 +11,5 @@ typedef struct light_type {
 obj_t* light_init(FILE* in, int objtype);
 void light_dump(FILE* out, obj_t* obj);
 void free_light(obj_t* obj);
-
+void light_getemiss(obj_t* obj, double* emiss);
 #endif

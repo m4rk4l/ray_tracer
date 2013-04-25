@@ -5,12 +5,13 @@
 CC=-gcc
 
 #DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
+DEBUG += -DDBG_DIFFUSE
 #DEBUG += -DDBG_PIX_2_WORLD
 #DEBUG += -DDBG_MAKE_PIXEL -DDBG_CLAMP_INTENSITY
 #DEBUG += -DDBG_HITS_PLANE
 #DEBUG += -DDBG_HITS_SPHERE -DDBG_SPHERE_GETAMB
 
-INPUT = 640 480 < input/psphere.txt 2> runtime.info > img.ppm
+INPUT = 640 480 < input/v2/d01.txt 2> runtime.info > img.ppm
 
 # Location of header files
 INCDIR = include/

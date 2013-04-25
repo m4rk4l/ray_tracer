@@ -26,6 +26,7 @@ obj_t* light_init(FILE* in, int objtype) {
         light_obj->priv = light;
         light_obj->obj_dump = light_dump;
         light_obj->free_obj = free_light;
+        light_obj->getemiss = light_getemiss;
     }
 
 
@@ -43,6 +44,17 @@ void light_dump(FILE* out, obj_t* obj) {
     fprintf(out, "\nDumping object of type Light\n");
     vecprn3(out, "\temisivity - ", obj->emissivity);
     vecprn3(out, "\tlocation - ", light->center);
+}
+
+/**
+ * gets the emissivity of a light object.
+ * @param obj the light object we are trying to get the emissivity from
+ * @param emiss a ponter to the location where to put emissivity
+ */
+void light_getemiss(obj_t* obj, double* emiss) {
+    emiss[0] = obj->emissivity[0];
+    emiss[1] = obj->emissivity[1];
+    emiss[2] = obj->emissivity[2];
 }
 
 /**

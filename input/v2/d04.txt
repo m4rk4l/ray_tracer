@@ -33,11 +33,9 @@
 0 1  -5       center
 1.5           radius
 
-
 10            light
 9 4.5 0         emissivity
 -4 4 -2        location
-
 
 10            light
 0 4.5 9         emissivity

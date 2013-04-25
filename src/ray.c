@@ -42,19 +42,21 @@ void ray_trace(model_t* model, double* base, double* dir, double* intensity,
 
 /**
  * finds the colsest object to an object.
- * @param objs
- * @param base
- * @param dir
- * @param smt
- * @param mindist
+ * @param objs a list of objects.
+ * @param base the base of the ray.
+ * @param dir direction of the ray
+ * @param smt NOT SURE FOR WHAT IS USED :s
+ * @param mindist is a pointer to put the mimdistance.
  */
 obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
                                                             double* mindist) {
     obj_t* closest = NULL;
     obj_t* cur_obj = objs->head;
-    double shortest = -1;
+    double shortest = -1; // dont really need shortest, could use mindist.
+    double tempdir[VECTOR_SIZE];
+    unitvec(dir, tempdir);// making sure that dir is a unit vector
     while(cur_obj != NULL) {
-        double dist = cur_obj->hits(base, dir, cur_obj);
+        double dist = cur_obj->hits(base, tempdir, cur_obj);
 #ifdef DBG_FND
         fprintf(stderr, " FND %4d: %5.1lf - ", cur_obj->objid, dist);
 #endif
