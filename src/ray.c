@@ -19,7 +19,7 @@ void ray_trace(model_t* model, double* base, double* dir, double* intensity,
         return;
     }
 #ifdef DBG_HIT
-    fprintf(stderr, " HIT %4d: %5.1lf (%5.1lf, %5.1lf, %5.1lf) - ",
+    fprintf(stderr, "HIT %4d: %5.1lf (%5.1lf, %5.1lf, %5.1lf) - \n",
                            closest->objid, mindist, closest->hitloc[0],
                            closest->hitloc[1], closest->hitloc[2]);
 #endif
@@ -35,7 +35,7 @@ void ray_trace(model_t* model, double* base, double* dir, double* intensity,
     double temp_intensity[3] = {intensity[0], intensity[1], intensity[2]};
     scale3(factor, temp_intensity, intensity);
 #ifdef DBG_AMB
-    fprintf(stderr, " AMB (%5.1lf, %5.1lf, %5.1lf) - ",
+    fprintf(stderr, "AMB (%5.1lf, %5.1lf, %5.1lf) - \n",
                             intensity[0], intensity[1], intensity[2]);
 #endif
 }
@@ -57,13 +57,17 @@ obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
     unitvec(dir, tempdir);// making sure that dir is a unit vector
     while(cur_obj != NULL) {
         double dist = cur_obj->hits(base, tempdir, cur_obj);
-#ifdef DBG_FND
-        fprintf(stderr, " FND %4d: %5.1lf - ", cur_obj->objid, dist);
-#endif
         if((dist < shortest || shortest == -1) && dist != -1) {
             closest = cur_obj;
             shortest = dist;
         }
+#ifdef DBG_FND
+    fprintf(stderr, "FND %4d: %5.1lf -", cur_obj->objid, dist);
+    vecprn3(stderr, "base ", base);
+    vecprn3(stderr, "direction ", dir);// temp dir.
+    vecprn3(stderr, "hits ", cur_obj->hitloc);
+    fprintf(stderr, "\n");
+#endif
         cur_obj = cur_obj->next;
     }
     *mindist = shortest;

@@ -28,10 +28,10 @@ void make_image(model_t* model) {
     for(y = 0; y < height; y++) {
         for(x = 0; x < width; x++) {
 #ifdef DBG_PIX
-    fprintf(stderr, "\nPIX %4d %4d - ", x, y);
+    fprintf(stderr, "\nPIX %4d %4d - \n", x, y);
 #endif
-            make_pixel(model, x, height - y, (pixmap + incrementer));
-            incrementer += VECTOR_SIZE;
+            make_pixel(model, x, y, (pixmap + incrementer));//change y to
+            incrementer += VECTOR_SIZE;                     //height - y
         }
     }
 
@@ -54,7 +54,7 @@ void make_pixel(model_t* model, int x, int y, unsigned char* pixval) {
 
     map_pix_to_world(model->proj, x, y, world);
 #ifdef DBG_WORLD
-    fprintf(stderr, " WRL (%5.1lf, %5.1lf) - ", world[0], world[1]);
+    fprintf(stderr, "WRL (%5.1lf, %5.1lf) - \n", world[0], world[1]);
 #endif
     int i;
     for (i = 0; i < VECTOR_SIZE; i++) {
@@ -85,6 +85,14 @@ void make_pixel(model_t* model, int x, int y, unsigned char* pixval) {
 static void get_dir(double* view_point, double* world, double* dir) {
     diff3(view_point, world, dir);
     unitvec(dir, dir);
+#ifdef DBG_MAKE_PIXEL
+    double vec[SIZE];
+    diff3(view_point, world, vec);
+    vecprn3(stderr, "view_point ", view_point);
+    vecprn3(stderr, "world ", world);
+    vecprn3(stderr, "diff(vp, w) ", vec);
+    vecprn3(stderr, "dir ", dir);
+#endif
     //double vec[3] = {0.0, 0.0, 0.0};
     //diff3(view_point, world, vec);
     //unitvec(vec, dir);

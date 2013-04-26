@@ -37,6 +37,7 @@ int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
     double dist_light;
     double cos_theta;
 
+vecprn3(stderr, "------------prev hit point was           : ", hitobj->hitloc);
     light_t* light = lobj->priv;
     diff3(hitobj->hitloc, light->center, dir_light);
 
@@ -50,6 +51,7 @@ int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
 
     obj_t* closest = find_closest_obj(lst, hitobj->hitloc, dir_light,
                                                              NULL, &dist_obj);
+vecprn3(stderr, "------------next hit point was           : ", hitobj->hitloc);
     dist_light = length3(dir_light);
 
     if (closest != NULL && closest->objid != hitobj->objid &&
@@ -70,7 +72,8 @@ int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
 
 #ifdef DBG_DIFFUSE
     fprintf(stderr, "hit object id was       :\t%d\n", hitobj->objid);
-    vecprn3(stderr, "distance was            : ", hitobj->hitloc);
+    fprintf(stderr, "hit object type was     :\t%d\n", hitobj->objtype);
+    vecprn3(stderr, "hit point was           : ", hitobj->hitloc);
     vecprn3(stderr, "normal at hitpoint      : ", hitobj->normal);
     fprintf(stderr, "light object id         :\t%d\n", lobj->objid);
     vecprn3(stderr, "light center was        : ", light->center);
