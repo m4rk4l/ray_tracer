@@ -33,11 +33,10 @@ obj_t* sphere_init(FILE* in, int objtype) {
         return obj;
     }
 
-    rc = parse_ints(in, NULL, "", 0);// empty line
     rc += parse_doubles(in, sphere->center, "%lf%lf%lf", VECTOR_SIZE);
     rc += parse_doubles(in, &radius, "%lf", 1);
 
-    if (radius != -1 && rc == 0) {
+    if (rc == VECTOR_SIZE + 1) {
         sphere->radius = radius;
         obj->priv = sphere;
         obj->hits = sphere_hits;

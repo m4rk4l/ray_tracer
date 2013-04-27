@@ -9,10 +9,46 @@ static void dump_or_free(FILE* out, list_t* aList, int option);
  * new object_types according to input.
  */
 int model_init(FILE* in, model_t* model) {
-    int rc = 0;
+    int rc;
     int objtype;
     obj_t* newobj = NULL;
 
+    while (in != NULL) {
+        rc = parse_ints(in, &objtype, "%d", 1);//parse obj
+        if (feof(in) != 0) {
+            fprintf(stderr, "###END OF FILE###");
+            rc = EXIT_SUCCESS; // reached the end of file without errors? maybe
+            break;
+        } else if (rc != 1) {
+            fprintf(stderr, "### In model.c\n\tmodel_init: error reading"
+                            " object type.\n");
+            rc = EXIT_FAILURE;
+            break;
+        }
+
+        newobj = init_specific_object(in, objtype);
+        if (newobj == NULL) {
+            fprintf(stderr, "### in model.c\n\tmodel_init: "
+                            "error while parsing object.\n");
+            rc = EXIT_FAILURE;
+            break;
+        }
+
+        // otherwise, add it to a list depending on the objtype
+        if (FIRST_LIGHT <= objtype && objtype <= LAST_LIGHT) { // light
+            list_add(model->lights, newobj);
+            rc = EXIT_SUCCESS;
+        } else if (FIRST_TYPE <= objtype && objtype <= LAST_TYPE) { // scene
+            list_add(model->scene, newobj);
+            rc = EXIT_SUCCESS;
+        } else {
+            fprintf(stderr, "### in model.c\n\t"
+                            "adding to an unknown location...\n");
+            rc = EXIT_FAILURE;
+        }
+    }
+
+/**
     while(rc != -2) { //do while you havent reached the end of file
         rc = parse_doubles(in, NULL, "", 0);// parse for nothing. check misc.c
         rc = parse_ints(in, &objtype, "%d", 1); //parses one element the obj
@@ -51,7 +87,7 @@ int model_init(FILE* in, model_t* model) {
     if(rc == -2) { // reached the end of file without errors.
         rc = 0;
     }
-
+*/
     return rc;
 }
 

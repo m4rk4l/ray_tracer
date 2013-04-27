@@ -31,7 +31,7 @@ obj_t* pplane_init(FILE* in, int objtype) {
 
     rc = parse_ints(in, &ndx, "%d", 1);
     int num_shaders = sizeof(plane_shaders)/sizeof(void*);
-    if (rc == 0 && ndx <= num_shaders) {
+    if (rc == 1 && ndx <= num_shaders) {
         plane_t* plane = new->priv;
         plane->plane_priv = NULL;
         //new->priv->plane_priv = NULL;

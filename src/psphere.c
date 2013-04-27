@@ -30,7 +30,7 @@ obj_t* psphere_init(FILE* in, int objtype) {
 
     rc = parse_ints(in, &ndx, "%d", 1);
     int num_shaders = sizeof(sphere_shaders)/sizeof(void*);
-    if (rc == 0 && ndx <= num_shaders) {
+    if (rc == 1 && ndx <= num_shaders) {
         //sphere_t* spehere = new->priv;
         //sphere->sphere_priv = NULL;
         new->obj_dump = psphere_dump;

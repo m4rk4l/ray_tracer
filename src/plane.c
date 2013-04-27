@@ -27,12 +27,10 @@ obj_t* plane_init(FILE* in, int objtype) {
 
     plane_t* plane = (plane_t*)Malloc(sizeof(plane_t));
     obj->priv = plane;// need to cast to void?
-    rc = parse_ints(in, NULL, "", 0);// before getting plane info we expect
-                                     // an empty line.
     rc += parse_doubles(in, plane->normal, "%lf%lf%lf", VECTOR_SIZE);
     rc += parse_doubles(in, plane->point, "%lf%lf%lf", VECTOR_SIZE);
 
-    if (rc != 0) {
+    if (rc != 2 * VECTOR_SIZE) {
         fprintf(stderr, "###in plane.c\n\tplane_init: error while parsing"
                         " plane object.\n");
         free(plane);

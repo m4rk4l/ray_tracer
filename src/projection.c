@@ -1,8 +1,6 @@
 #include "projection.h"
 
-
 /** method declarations */
-static int parse_proj(FILE* in, proj_t* proj);
 static int check_arguments(int argc, char** argv);
 
 /**
@@ -13,19 +11,22 @@ static int check_arguments(int argc, char** argv);
  */
 proj_t* projection_init(int argc, char** argv, FILE* input) {
     proj_t* proj = (proj_t*)Malloc(sizeof(proj_t));
-    int error = 0;
+    int rc = 0;
 
-    error += check_arguments(argc, argv);
+    rc += check_arguments(argc, argv);
 
-    if (error == 0) { //arguments are OK.
+    if (rc == 0) { //arguments are OK.
         proj->win_size_pixel[0] = atoi(argv[1]);// window coord, width (cols)
         proj->win_size_pixel[1] = atoi(argv[2]);// window coord, height (rows)
 
-        error += parse_proj(input, proj);
+        rc = parse_doubles(input, proj->win_size_world, "%lf%lf",
+                                                            VECTOR_SIZE - 1);
+        rc += parse_doubles(input, proj->view_point, "%lf%lf%lf", VECTOR_SIZE);
 
-        if (error != 0) { //error while reading input file.
-            printf("### In projection.c\n\tprojection_init: Error while"
-                    " parsing for world and view point.\n");
+        if (rc != 5) { //error while reading input file.
+            fprintf(stderr, "### In projection.c\n\t"
+                            "projection_init: Error while"
+                            " parsing for world and view point.\n");
             exit(EXIT_FAILURE);
         }
     } else {
@@ -113,24 +114,6 @@ static int check_arguments(int argc, char** argv) {
     }
     /*TODO: possible improvement is to check the arguments to see if they are 
      * ints with isdigit func from ctype.h */
-    return error;
-}
-
-/**
- * parses a file for window coordinates and view point coordinates.
- * @param in is an input file to parse.
- * @param proj is a structure where staff read is gona be put.
- */
-static int parse_proj(FILE* in, proj_t* proj) {
-    int error = 0;
-    if (in != NULL) { // check if in is not NULL.
-        error -= parse_doubles(in, proj->win_size_world, "%lf%lf",
-                                                            VECTOR_SIZE - 1);
-        error -= parse_doubles(in, proj->view_point, "%lf%lf%lf",
-                                                                VECTOR_SIZE);
-    } else {
-        fprintf(stderr, "#### in projection.c\n\tparse: file is NULL!!!\n");
-    }
     return error;
 }
 

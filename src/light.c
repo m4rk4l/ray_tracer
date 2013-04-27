@@ -14,9 +14,8 @@ obj_t* light_init(FILE* in, int objtype) {
     }
 
     light_t* light = Malloc(sizeof(light_t));
-    int error = parse_doubles(in, light->center, "%lf%lf%lf", VECTOR_SIZE);
-    
-    if (error != 0) {
+    int rc = parse_doubles(in, light->center, "%lf%lf%lf", VECTOR_SIZE);
+    if (rc != VECTOR_SIZE) {
         fprintf(stderr, "### in light_init:\n\t"
                         "erorr while parsing for light location.\n");
         free(light);
