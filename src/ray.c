@@ -13,7 +13,9 @@
 void ray_trace(model_t* model, double* base, double* dir, double* intensity,
                                         double total_dist, obj_t* last_hit) {
     double mindist;
-    obj_t* closest = find_closest_obj(model->scene, base, dir, NULL, &mindist);
+    int mod = 0;// setting mod to true
+    obj_t* closest = find_closest_obj(model->scene, base, dir, NULL, mod,
+                                                                    &mindist);
 
     if (closest == NULL) {
         return;
@@ -46,10 +48,11 @@ void ray_trace(model_t* model, double* base, double* dir, double* intensity,
  * @param base the base of the ray.
  * @param dir direction of the ray
  * @param smt NOT SURE FOR WHAT IS USED :s
+ * @param mod is a flag that tells me wheather i want the hitloc to be modified
  * @param mindist is a pointer to put the mimdistance.
  */
 obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
-                                                            double* mindist) {
+                                         int modify, double* mindist) {
     obj_t* closest = NULL;
     obj_t* cur_obj = objs->head;
     double shortest = -1; // dont really need shortest, could use mindist.
@@ -58,6 +61,9 @@ obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
     while(cur_obj != NULL) {
         double dist = cur_obj->hits(base, tempdir, cur_obj);
         if((dist < shortest || shortest == -1) && dist != -1) {
+            if (MOD == modify) { // flag to see if we want to modify something.
+                obj_hitloc(base, tempdir, dist, cur_obj->hitloc);
+            }
             closest = cur_obj;
             shortest = dist;
         }

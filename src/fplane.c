@@ -23,12 +23,11 @@ obj_t* fplane_init(FILE* in, int objtype) {
     plane_t* plane = obj->priv;
     plane->plane_priv = fplane;
 
-    rc += parse_ints(in, NULL, "", 0);//parse an empty line
     rc += parse_doubles(in, fplane->xdir, "%lf%lf%lf", VECTOR_SIZE);
     unitvec(fplane->xdir, fplane->xdir);
     rc += parse_doubles(in, fplane->size, "%lf%lf", VECTOR_SIZE - 1);
 
-    if (rc != 0) {
+    if (rc != VECTOR_SIZE + 2) {// read five things
         fprintf(stderr, "### in fplane.c\n\tfplane_init: error while"
                         " parsing for finite plane data.\n");
         free_fplane(obj);; // frees a plane object.

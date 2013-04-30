@@ -11,5 +11,5 @@ void ray_trace(model_t* model, double* base, double* dir, double* intensity,
                                         double total_dist, obj_t* last_hit);
 
 obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
-                                                             double* mindist);
+                                                int modify, double* mindist);
 #endif

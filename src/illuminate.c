@@ -37,7 +37,6 @@ int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
     double dist_light;
     double cos_theta;
 
-vecprn3(stderr, "------------prev hit point was           : ", hitobj->hitloc);
     light_t* light = lobj->priv;
     diff3(hitobj->hitloc, light->center, dir_light);
 
@@ -49,9 +48,9 @@ vecprn3(stderr, "------------prev hit point was           : ", hitobj->hitloc);
         return ans;
     }
 
+    int mod = 1; //set modify flag to false.
     obj_t* closest = find_closest_obj(lst, hitobj->hitloc, dir_light,
-                                                             NULL, &dist_obj);
-vecprn3(stderr, "------------next hit point was           : ", hitobj->hitloc);
+                                                   NULL, mod, &dist_obj);
     dist_light = length3(dir_light);
 
     if (closest != NULL && closest->objid != hitobj->objid &&
