@@ -16,7 +16,6 @@ int model_init(FILE* in, model_t* model) {
     while (in != NULL) {
         rc = parse_ints(in, &objtype, "%d", 1);//parse obj
         if (feof(in) != 0) {
-            fprintf(stderr, "###END OF FILE###");
             rc = EXIT_SUCCESS; // reached the end of file without errors? maybe
             break;
         } else if (rc != 1) {
@@ -47,47 +46,6 @@ int model_init(FILE* in, model_t* model) {
             rc = EXIT_FAILURE;
         }
     }
-
-/**
-    while(rc != -2) { //do while you havent reached the end of file
-        rc = parse_doubles(in, NULL, "", 0);// parse for nothing. check misc.c
-        rc = parse_ints(in, &objtype, "%d", 1); //parses one element the obj
-
-        // if there is an error while parsing the objtype, break out of loop
-        if (rc == -1) {
-            fprintf(stderr, "### In model.c\n\tmodel_init: error reading"
-                            " object type.\n");
-            break;
-        } else if (rc == -2) {
-            fprintf(stderr, "### REACHED THE END OF FILE ###\n");
-            break;
-        }
-
-        newobj = init_specific_object(in, objtype);
-
-        // check if newobj != null, if so parsing obj error.
-        if (newobj == NULL) {
-            fprintf(stderr, "### in model.c\n\tmodel_init: "
-                            "error while parsing object.\n");
-            rc++;
-            break;
-        }
-
-        // otherwise, add it to a list depending on the objtype
-        if (FIRST_LIGHT <= objtype && objtype <= LAST_LIGHT) { // light
-            list_add(model->lights, newobj);
-        } else if (FIRST_TYPE <= objtype && objtype <= LAST_TYPE) { // scene
-            list_add(model->scene, newobj);
-        } else {
-            fprintf(stderr, "### in model.c\n\t"
-                            "adding to an unknown location...\n");
-        }
-    }
-
-    if(rc == -2) { // reached the end of file without errors.
-        rc = 0;
-    }
-*/
     return rc;
 }
 
@@ -97,9 +55,7 @@ int model_init(FILE* in, model_t* model) {
  * @param model is a pointer to our structure.
  */
 void model_dump(FILE* out, model_t* model) {
-    //should dump all elements in model.lights
     dump_or_free(out, model->lights, DUMP_OBJ);
-    //should dump all elements in model.scene
     dump_or_free(out, model->scene, DUMP_OBJ);
 }
 
@@ -125,6 +81,8 @@ static void dump_or_free(FILE* out, list_t* aList, int option) {
         case DUMP_OBJ:
             while(cur != NULL) {
                 cur->obj_dump(out, cur);
+                fprintf(out, "-------------------------------------------"
+                                "---------------\n");
                 cur = cur->next;
             }
             break;
@@ -163,6 +121,7 @@ static obj_t* init_specific_object(FILE* in, int obj_type) {
             new_obj = fplane_init(in, obj_type);
         break;
         case TILED_PLANE:
+            new_obj = tplane_init(in, obj_type);
         break;
         case TEX_PLANE:
         break;

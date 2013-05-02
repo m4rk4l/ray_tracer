@@ -15,7 +15,7 @@ obj_t* fplane_init(FILE* in, int objtype) {
     obj_t* obj = plane_init(in, objtype);
     if (obj == NULL) {
         fprintf(stderr, "### in fplane.c\n\tfplane_init:"
-                        "error while initiating a plane\n");
+                        " error while initiating a plane\n");
         return obj;
     }
 
@@ -24,16 +24,16 @@ obj_t* fplane_init(FILE* in, int objtype) {
     plane->plane_priv = fplane;
 
     rc += parse_doubles(in, fplane->xdir, "%lf%lf%lf", VECTOR_SIZE);
-    unitvec(fplane->xdir, fplane->xdir);
     rc += parse_doubles(in, fplane->size, "%lf%lf", VECTOR_SIZE - 1);
 
     if (rc != VECTOR_SIZE + 2) {// read five things
         fprintf(stderr, "### in fplane.c\n\tfplane_init: error while"
                         " parsing for finite plane data.\n");
-        free_fplane(obj);; // frees a plane object.
+        free_fplane(obj); // frees a plane object.
         free(obj);
         obj = NULL;
     } else {
+        unitvec(fplane->xdir, fplane->xdir);
         obj->hits = hits_fplane;
         obj->obj_dump = fplane_dump;
         obj->free_obj = free_fplane;

@@ -30,7 +30,7 @@ void make_image(model_t* model) {
 #ifdef DBG_PIX
     fprintf(stderr, "\nPIX %4d %4d - \n", x, y);
 #endif
-            make_pixel(model, x, height - y, (pixmap + incrementer));//change y to
+            make_pixel(model, x, y, (pixmap + incrementer));//change y to
             incrementer += VECTOR_SIZE;                     //height - y
         }
     }

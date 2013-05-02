@@ -48,9 +48,13 @@ int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
         return ans;
     }
 
-    int mod = 1; //set modify flag to false.
+    double temp_hit[3] = {hitobj->hitloc[0], hitobj->hitloc[1],
+                            hitobj->hitloc[2]};
     obj_t* closest = find_closest_obj(lst, hitobj->hitloc, dir_light,
-                                                   NULL, mod, &dist_obj);
+                                                        NULL, &dist_obj);
+    hitobj->hitloc[0] = temp_hit[0];
+    hitobj->hitloc[1] = temp_hit[1];
+    hitobj->hitloc[2] = temp_hit[2];
     dist_light = length3(dir_light);
 
     if (closest != NULL && closest->objid != hitobj->objid &&
@@ -66,8 +70,10 @@ int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
 
     unitvec(hitobj->normal, dir_obj);
     unitvec(dir_light, dir_light);
-    cos_theta = dot3(dir_obj, dir_light);
+    cos_theta = dot3(dir_light, dir_obj);
     hitobj->getdiff(hitobj, diffuse);
+vecprn3(stderr, "dir_obj ", dir_obj);
+vecprn3(stderr, "dir_light ", dir_light);
 
 #ifdef DBG_DIFFUSE
     fprintf(stderr, "hit object id was       :\t%d\n", hitobj->objid);

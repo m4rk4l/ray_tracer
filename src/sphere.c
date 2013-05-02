@@ -102,7 +102,7 @@ double sphere_hits(double* base, double* dir, obj_t* obj) {
 
     if (disc > ALMOST_ZERO) {
         dist = ((-1 *b) - sqrt(disc))/(2*a);
-        //sphere_hitloc(base, dir, dist, obj->hitloc);
+        sphere_hitloc(base, dir, dist, obj->hitloc);
         sphere_normal(obj->hitloc, sphere->center, obj->normal);
     }
 

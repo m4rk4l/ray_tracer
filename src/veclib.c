@@ -324,11 +324,14 @@ void mat_rot(double* normal, double* xdir, double* dest) {
     double v2[SIZE];
     double u_v1[SIZE];
     double u_v2[SIZE];
+    double cross[SIZE];
+    int i;
 
-    cpy_vec(v2, xdir, SIZE);
     cpy_vec(v1, normal, SIZE);
+    cpy_vec(v2, xdir, SIZE);
     unitvec(v1, u_v1);
     unitvec(v2, u_v2);
+    mat_cross(u_v1, u_v2, cross, SIZE);
 
     cpy_vec(dest, u_v2, SIZE);
     cpy_vec((dest + 2*SIZE), u_v1, SIZE);
