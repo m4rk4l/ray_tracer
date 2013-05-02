@@ -1,0 +1,1001 @@
+Window size in pixels 
+     5      5    
+
+Window size in world coordinates 
+     8      6 
+
+Location of Viewpoint 
+   0.0    0.0    3.0
+
+Dumping object of type Light 
+
+Light data 
+emissivity -    9.000   4.500   0.000
+center     -   -4.000   4.000  -2.000
+
+Dumping object of type Light 
+
+Light data 
+emissivity -    0.000   4.500   9.000
+center     -    4.000   4.000  -2.000
+
+Dumping object of type Plane 
+Material data -
+Ambient  -    2.000   2.000   2.000
+Diffuse  -    6.000   6.000   6.000
+Specular -    0.000   0.000   0.000
+
+Plane data 
+normal -    0.000   1.000   0.000
+point  -    0.000  -4.000   0.000
+
+Dumping object of type Sphere 
+
+Sphere data 
+Material data -
+Ambient  -    5.000   1.000   1.000
+Diffuse  -    6.000   6.000   6.000
+Specular -    0.000   0.000   0.000
+center -   -2.000  -1.000  -4.000
+radius  -    1.500
+
+Dumping object of type Sphere 
+
+Sphere data 
+Material data -
+Ambient  -    1.000   5.000   1.000
+Diffuse  -    6.000   6.000   6.000
+Specular -    0.000   0.000   0.000
+center -    2.000  -1.000  -4.000
+radius  -    1.500
+
+Dumping object of type Sphere 
+
+Sphere data 
+Material data -
+Ambient  -    1.000   1.000   1.000
+Diffuse  -    6.000   6.000   6.000
+Specular -    0.000   0.000   0.000
+center -    0.000   1.000  -5.000
+radius  -    1.500
+
+PIX:  ROW = 0 COL = 0 - WRL ( -4.0,  -3.0) - 
+FND    0:   7.8 - base   0.000   0.000   3.000
+dir  -0.686  -0.514  -0.514
+hits  -5.333  -4.000  -1.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.686  -0.514  -0.514
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.686  -0.514  -0.514
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.686  -0.514  -0.514
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was              -5.333  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is     0.163   0.979  -0.122
+distance to light is        8.172
+cosine is                   0.979
+
+FND    1:  -1.0 - base  -5.333  -4.000  -1.000
+dir   0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base  -5.333  -4.000  -1.000
+dir   0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base  -5.333  -4.000  -1.000
+dir   0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+Emissivity of the light     9.000   4.500   0.000
+Diffuse reflectivity        6.469   3.235   0.000
+Current ivec                8.469   5.235   2.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was              -5.333  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is     0.757   0.649  -0.081
+distance to light is       12.333
+cosine is                   0.649
+
+FND    1:  -1.0 - base  -5.333  -4.000  -1.000
+dir   0.757   0.649  -0.081
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base  -5.333  -4.000  -1.000
+dir   0.757   0.649  -0.081
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base  -5.333  -4.000  -1.000
+dir   0.757   0.649  -0.081
+hits   0.000   0.000   0.000
+Emissivity of the light     0.000   4.500   9.000
+Diffuse reflectivity        0.000   1.420   2.840
+Current ivec                8.469   6.655   4.840
+
+PIX:  ROW = 1 COL = 0 - WRL ( -2.0,  -3.0) - 
+FND    0:   6.3 - base   0.000   0.000   3.000
+dir  -0.426  -0.640  -0.640
+hits  -2.667  -4.000  -1.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.426  -0.640  -0.640
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.426  -0.640  -0.640
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.426  -0.640  -0.640
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was              -2.667  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is    -0.163   0.979  -0.122
+distance to light is        8.172
+cosine is                   0.979
+
+FND    1:  -1.0 - base  -2.667  -4.000  -1.000
+dir  -0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base  -2.667  -4.000  -1.000
+dir  -0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base  -2.667  -4.000  -1.000
+dir  -0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+Emissivity of the light     9.000   4.500   0.000
+Diffuse reflectivity        6.469   3.235   0.000
+Current ivec                8.469   5.235   2.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was              -2.667  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is     0.637   0.765  -0.096
+distance to light is       10.462
+cosine is                   0.765
+
+FND    1:  -1.0 - base  -2.667  -4.000  -1.000
+dir   0.637   0.765  -0.096
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base  -2.667  -4.000  -1.000
+dir   0.637   0.765  -0.096
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base  -2.667  -4.000  -1.000
+dir   0.637   0.765  -0.096
+hits   0.000   0.000   0.000
+Emissivity of the light     0.000   4.500   9.000
+Diffuse reflectivity        0.000   1.974   3.947
+Current ivec                8.469   7.208   5.947
+
+PIX:  ROW = 2 COL = 0 - WRL (  0.0,  -3.0) - 
+FND    0:   5.7 - base   0.000   0.000   3.000
+dir   0.000  -0.707  -0.707
+hits   0.000  -4.000  -1.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.000  -0.707  -0.707
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.000  -0.707  -0.707
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.000  -0.707  -0.707
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               0.000  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is    -0.444   0.889  -0.111
+distance to light is        9.000
+cosine is                   0.889
+
+FND    1:  -1.0 - base   0.000  -4.000  -1.000
+dir  -0.444   0.889  -0.111
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000  -4.000  -1.000
+dir  -0.444   0.889  -0.111
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000  -4.000  -1.000
+dir  -0.444   0.889  -0.111
+hits   0.000   0.000   0.000
+Emissivity of the light     9.000   4.500   0.000
+Diffuse reflectivity        5.333   2.667   0.000
+Current ivec                7.333   4.667   2.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               0.000  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is     0.444   0.889  -0.111
+distance to light is        9.000
+cosine is                   0.889
+
+FND    1:  -1.0 - base   0.000  -4.000  -1.000
+dir   0.444   0.889  -0.111
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000  -4.000  -1.000
+dir   0.444   0.889  -0.111
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000  -4.000  -1.000
+dir   0.444   0.889  -0.111
+hits   0.000   0.000   0.000
+Emissivity of the light     0.000   4.500   9.000
+Diffuse reflectivity        0.000   2.667   5.333
+Current ivec                7.333   7.333   7.333
+
+PIX:  ROW = 3 COL = 0 - WRL (  2.0,  -3.0) - 
+FND    0:   6.3 - base   0.000   0.000   3.000
+dir   0.426  -0.640  -0.640
+hits   2.667  -4.000  -1.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.426  -0.640  -0.640
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.426  -0.640  -0.640
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.426  -0.640  -0.640
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               2.667  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is    -0.637   0.765  -0.096
+distance to light is       10.462
+cosine is                   0.765
+
+FND    1:  -1.0 - base   2.667  -4.000  -1.000
+dir  -0.637   0.765  -0.096
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   2.667  -4.000  -1.000
+dir  -0.637   0.765  -0.096
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   2.667  -4.000  -1.000
+dir  -0.637   0.765  -0.096
+hits   0.000   0.000   0.000
+Emissivity of the light     9.000   4.500   0.000
+Diffuse reflectivity        3.947   1.974   0.000
+Current ivec                5.947   3.974   2.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               2.667  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is     0.163   0.979  -0.122
+distance to light is        8.172
+cosine is                   0.979
+
+FND    1:  -1.0 - base   2.667  -4.000  -1.000
+dir   0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   2.667  -4.000  -1.000
+dir   0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   2.667  -4.000  -1.000
+dir   0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+Emissivity of the light     0.000   4.500   9.000
+Diffuse reflectivity        0.000   3.235   6.469
+Current ivec                5.947   7.208   8.469
+
+PIX:  ROW = 4 COL = 0 - WRL (  4.0,  -3.0) - 
+FND    0:   7.8 - base   0.000   0.000   3.000
+dir   0.686  -0.514  -0.514
+hits   5.333  -4.000  -1.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.686  -0.514  -0.514
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.686  -0.514  -0.514
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.686  -0.514  -0.514
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               5.333  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is    -0.757   0.649  -0.081
+distance to light is       12.333
+cosine is                   0.649
+
+FND    1:  -1.0 - base   5.333  -4.000  -1.000
+dir  -0.757   0.649  -0.081
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   5.333  -4.000  -1.000
+dir  -0.757   0.649  -0.081
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   5.333  -4.000  -1.000
+dir  -0.757   0.649  -0.081
+hits   0.000   0.000   0.000
+Emissivity of the light     9.000   4.500   0.000
+Diffuse reflectivity        2.840   1.420   0.000
+Current ivec                4.840   3.420   2.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               5.333  -4.000  -1.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is    -0.163   0.979  -0.122
+distance to light is        8.172
+cosine is                   0.979
+
+FND    1:  -1.0 - base   5.333  -4.000  -1.000
+dir  -0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   5.333  -4.000  -1.000
+dir  -0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   5.333  -4.000  -1.000
+dir  -0.163   0.979  -0.122
+hits   0.000   0.000   0.000
+Emissivity of the light     0.000   4.500   9.000
+Diffuse reflectivity        0.000   3.235   6.469
+Current ivec                4.840   6.655   8.469
+
+PIX:  ROW = 0 COL = 1 - WRL ( -4.0,  -1.5) - 
+FND    0:  13.9 - base   0.000   0.000   3.000
+dir  -0.766  -0.287  -0.575
+hits -10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.766  -0.287  -0.575
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.766  -0.287  -0.575
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.766  -0.287  -0.575
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was             -10.667  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is     0.615   0.738   0.277
+distance to light is       10.837
+cosine is                   0.738
+
+FND    1:  -1.0 - base -10.667  -4.000  -5.000
+dir   0.615   0.738   0.277
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base -10.667  -4.000  -5.000
+dir   0.615   0.738   0.277
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base -10.667  -4.000  -5.000
+dir   0.615   0.738   0.277
+hits   0.000   0.000   0.000
+Emissivity of the light     9.000   4.500   0.000
+Diffuse reflectivity        3.678   1.839   0.000
+Current ivec                5.678   3.839   2.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was             -10.667  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is     0.864   0.471   0.177
+distance to light is       16.974
+cosine is                   0.471
+
+FND    1:  -1.0 - base -10.667  -4.000  -5.000
+dir   0.864   0.471   0.177
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base -10.667  -4.000  -5.000
+dir   0.864   0.471   0.177
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base -10.667  -4.000  -5.000
+dir   0.864   0.471   0.177
+hits   0.000   0.000   0.000
+Emissivity of the light     0.000   4.500   9.000
+Diffuse reflectivity        0.000   0.750   1.499
+Current ivec                5.678   4.589   3.499
+
+PIX:  ROW = 1 COL = 1 - WRL ( -2.0,  -1.5) - 
+FND    0:  10.4 - base   0.000   0.000   3.000
+dir  -0.512  -0.384  -0.768
+hits  -5.333  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.512  -0.384  -0.768
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.512  -0.384  -0.768
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.512  -0.384  -0.768
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was              -5.333  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is     0.154   0.925   0.347
+distance to light is        8.647
+cosine is                   0.925
+
+FND    1:  -1.0 - base  -5.333  -4.000  -5.000
+dir   0.154   0.925   0.347
+hits   0.000   0.000   0.000
+
+FND    2:  -1.0 - base  -5.333  -4.000  -5.000
+dir   0.154   0.925   0.347
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base  -5.333  -4.000  -5.000
+dir   0.154   0.925   0.347
+hits   0.000   0.000   0.000
+Emissivity of the light     9.000   4.500   0.000
+Diffuse reflectivity        5.777   2.889   0.000
+Current ivec                7.777   4.889   2.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was              -5.333  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is     0.738   0.632   0.237
+distance to light is       12.654
+cosine is                   0.632
+
+FND    1:   3.1 - base  -5.333  -4.000  -5.000
+dir   0.738   0.632   0.237
+hits  -3.047  -2.041  -4.265
+
+FND    2:  -1.0 - base  -5.333  -4.000  -5.000
+dir   0.738   0.632   0.237
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base  -5.333  -4.000  -5.000
+dir   0.738   0.632   0.237
+hits   0.000   0.000   0.000
+hit object occluded by    0.000
+distance was              3.099
+
+PIX:  ROW = 2 COL = 1 - WRL (  0.0,  -1.5) - 
+FND    0:   8.9 - base   0.000   0.000   3.000
+dir   0.000  -0.447  -0.894
+hits   0.000  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.000  -0.447  -0.894
+hits  -3.047  -2.041  -4.265
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.000  -0.447  -0.894
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.000  -0.447  -0.894
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               0.000  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is    -0.424   0.848   0.318
+distance to light is        9.434
+cosine is                   0.848
+
+FND    1:   2.3 - base   0.000  -4.000  -5.000
+dir  -0.424   0.848   0.318
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000  -4.000  -5.000
+dir  -0.424   0.848   0.318
+hits   0.000   0.000   0.000
+
+FND    3:  -1.0 - base   0.000  -4.000  -5.000
+dir  -0.424   0.848   0.318
+hits   0.000   0.000   0.000
+hit object occluded by    0.000
+distance was              2.291
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               0.000  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is     0.424   0.848   0.318
+distance to light is        9.434
+cosine is                   0.848
+
+FND    1:  -1.0 - base   0.000  -4.000  -5.000
+dir   0.424   0.848   0.318
+hits  -0.971  -2.057  -4.272
+
+FND    2:   2.3 - base   0.000  -4.000  -5.000
+dir   0.424   0.848   0.318
+hits   0.971  -2.057  -4.272
+
+FND    3:  -1.0 - base   0.000  -4.000  -5.000
+dir   0.424   0.848   0.318
+hits   0.000   0.000   0.000
+hit object occluded by    0.000
+distance was              2.291
+
+PIX:  ROW = 3 COL = 1 - WRL (  2.0,  -1.5) - 
+FND    0:  10.4 - base   0.000   0.000   3.000
+dir   0.512  -0.384  -0.768
+hits   5.333  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.512  -0.384  -0.768
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.512  -0.384  -0.768
+hits   0.971  -2.057  -4.272
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.512  -0.384  -0.768
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               5.333  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is    -0.738   0.632   0.237
+distance to light is       12.654
+cosine is                   0.632
+
+FND    1:  -1.0 - base   5.333  -4.000  -5.000
+dir  -0.738   0.632   0.237
+hits  -0.971  -2.057  -4.272
+
+FND    2:   3.1 - base   5.333  -4.000  -5.000
+dir  -0.738   0.632   0.237
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   5.333  -4.000  -5.000
+dir  -0.738   0.632   0.237
+hits   0.000   0.000   0.000
+hit object occluded by    0.000
+distance was              3.099
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was               5.333  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is    -0.154   0.925   0.347
+distance to light is        8.647
+cosine is                   0.925
+
+FND    1:  -1.0 - base   5.333  -4.000  -5.000
+dir  -0.154   0.925   0.347
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   5.333  -4.000  -5.000
+dir  -0.154   0.925   0.347
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   5.333  -4.000  -5.000
+dir  -0.154   0.925   0.347
+hits   0.000   0.000   0.000
+Emissivity of the light     0.000   4.500   9.000
+Diffuse reflectivity        0.000   2.889   5.777
+Current ivec                2.000   4.889   7.777
+
+PIX:  ROW = 4 COL = 1 - WRL (  4.0,  -1.5) - 
+FND    0:  13.9 - base   0.000   0.000   3.000
+dir   0.766  -0.287  -0.575
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.766  -0.287  -0.575
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.766  -0.287  -0.575
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.766  -0.287  -0.575
+hits   0.000   0.000   0.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was              10.667  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         4.000
+light center was           -4.000   4.000  -2.000
+unit vector to light is    -0.864   0.471   0.177
+distance to light is       16.974
+cosine is                   0.471
+
+FND    1:  -1.0 - base  10.667  -4.000  -5.000
+dir  -0.864   0.471   0.177
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base  10.667  -4.000  -5.000
+dir  -0.864   0.471   0.177
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base  10.667  -4.000  -5.000
+dir  -0.864   0.471   0.177
+hits   0.000   0.000   0.000
+Emissivity of the light     9.000   4.500   0.000
+Diffuse reflectivity        1.499   0.750   0.000
+Current ivec                3.499   2.750   2.000
+
+hit object id was         0.000
+
+hit object type was        14.000
+hit point was              10.667  -4.000  -5.000
+normal at hitpoint          0.000   1.000   0.000
+light object id was         5.000
+light center was            4.000   4.000  -2.000
+unit vector to light is    -0.615   0.738   0.277
+distance to light is       10.837
+cosine is                   0.738
+
+FND    1:  -1.0 - base  10.667  -4.000  -5.000
+dir  -0.615   0.738   0.277
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base  10.667  -4.000  -5.000
+dir  -0.615   0.738   0.277
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base  10.667  -4.000  -5.000
+dir  -0.615   0.738   0.277
+hits   0.000   0.000   0.000
+Emissivity of the light     0.000   4.500   9.000
+Diffuse reflectivity        0.000   1.839   3.678
+Current ivec                3.499   4.589   5.678
+
+PIX:  ROW = 0 COL = 2 - WRL ( -4.0,   0.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir  -0.800   0.000  -0.600
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.800   0.000  -0.600
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.800   0.000  -0.600
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.800   0.000  -0.600
+hits   0.000   0.000   0.000
+
+PIX:  ROW = 1 COL = 2 - WRL ( -2.0,   0.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir  -0.555   0.000  -0.832
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.555   0.000  -0.832
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.555   0.000  -0.832
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.555   0.000  -0.832
+hits   0.000   0.000   0.000
+
+PIX:  ROW = 2 COL = 2 - WRL (  0.0,   0.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.000  -1.000
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.000  -1.000
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.000  -1.000
+hits   3.047  -2.041  -4.265
+
+FND    3:   6.9 - base   0.000   0.000   3.000
+dir   0.000   0.000  -1.000
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 3 COL = 2 - WRL (  2.0,   0.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.555   0.000  -0.832
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.555   0.000  -0.832
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.555   0.000  -0.832
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.555   0.000  -0.832
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 4 COL = 2 - WRL (  4.0,   0.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.800   0.000  -0.600
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.800   0.000  -0.600
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.800   0.000  -0.600
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.800   0.000  -0.600
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 0 COL = 3 - WRL ( -4.0,   1.5) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir  -0.766   0.287  -0.575
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.766   0.287  -0.575
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.766   0.287  -0.575
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.766   0.287  -0.575
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 1 COL = 3 - WRL ( -2.0,   1.5) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir  -0.512   0.384  -0.768
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.512   0.384  -0.768
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.512   0.384  -0.768
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.512   0.384  -0.768
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 2 COL = 3 - WRL (  0.0,   1.5) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.447  -0.894
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.447  -0.894
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.447  -0.894
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.447  -0.894
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 3 COL = 3 - WRL (  2.0,   1.5) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.512   0.384  -0.768
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.512   0.384  -0.768
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.512   0.384  -0.768
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.512   0.384  -0.768
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 4 COL = 3 - WRL (  4.0,   1.5) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.766   0.287  -0.575
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.766   0.287  -0.575
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.766   0.287  -0.575
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.766   0.287  -0.575
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 0 COL = 4 - WRL ( -4.0,   3.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir  -0.686   0.514  -0.514
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.686   0.514  -0.514
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.686   0.514  -0.514
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.686   0.514  -0.514
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 1 COL = 4 - WRL ( -2.0,   3.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir  -0.426   0.640  -0.640
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir  -0.426   0.640  -0.640
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir  -0.426   0.640  -0.640
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir  -0.426   0.640  -0.640
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 2 COL = 4 - WRL (  0.0,   3.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.707  -0.707
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.707  -0.707
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.707  -0.707
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.000   0.707  -0.707
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 3 COL = 4 - WRL (  2.0,   3.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.426   0.640  -0.640
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.426   0.640  -0.640
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.426   0.640  -0.640
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.426   0.640  -0.640
+hits   0.000   0.000  -3.882
+
+PIX:  ROW = 4 COL = 4 - WRL (  4.0,   3.0) - 
+FND    0:  -1.0 - base   0.000   0.000   3.000
+dir   0.686   0.514  -0.514
+hits  10.667  -4.000  -5.000
+
+FND    1:  -1.0 - base   0.000   0.000   3.000
+dir   0.686   0.514  -0.514
+hits  -0.971  -2.057  -4.272
+
+FND    2:  -1.0 - base   0.000   0.000   3.000
+dir   0.686   0.514  -0.514
+hits   3.047  -2.041  -4.265
+
+FND    3:  -1.0 - base   0.000   0.000   3.000
+dir   0.686   0.514  -0.514
+hits   0.000   0.000  -3.882
