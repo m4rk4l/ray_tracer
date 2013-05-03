@@ -55,9 +55,10 @@ obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
     obj_t* closest = NULL;
     obj_t* cur_obj = objs->head;
     double shortest = -1; // dont really need shortest, could use mindist.
-    unitvec(dir, dir);// making sure that dir is a unit vector
+    double temp_dir[3];
+    unitvec(dir, temp_dir);// making sure that dir is a unit vector
     while(cur_obj != NULL) {
-        double dist = cur_obj->hits(base, dir, cur_obj);
+        double dist = cur_obj->hits(base, temp_dir, cur_obj);
         if((dist < shortest || shortest == -1) && dist != -1) {
             closest = cur_obj;
             shortest = dist;
