@@ -60,6 +60,4 @@ typedef struct obj_type {
 
 obj_t* object_init(FILE* in, int objtype);
 
-void obj_hitloc(double* base, double* dir, double dist, double* dest);
-
 #endif

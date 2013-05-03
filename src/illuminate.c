@@ -50,11 +50,16 @@ int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
 
     double temp_hit[3] = {hitobj->hitloc[0], hitobj->hitloc[1],
                             hitobj->hitloc[2]};
+    double temp_normal[3] = {hitobj->normal[0], hitobj->normal[1],
+                            hitobj->normal[2]};
     obj_t* closest = find_closest_obj(lst, hitobj->hitloc, dir_light,
                                                         NULL, &dist_obj);
     hitobj->hitloc[0] = temp_hit[0];
     hitobj->hitloc[1] = temp_hit[1];
     hitobj->hitloc[2] = temp_hit[2];
+    hitobj->normal[0] = temp_normal[0];
+    hitobj->normal[1] = temp_normal[1];
+    hitobj->normal[2] = temp_normal[2];
     dist_light = length3(dir_light);
 
     if (closest != NULL && closest->objid != hitobj->objid &&
@@ -72,8 +77,6 @@ int process_light(list_t* lst, obj_t* hitobj, obj_t* lobj, double* ivec) {
     unitvec(dir_light, dir_light);
     cos_theta = dot3(dir_light, dir_obj);
     hitobj->getdiff(hitobj, diffuse);
-vecprn3(stderr, "dir_obj ", dir_obj);
-vecprn3(stderr, "dir_light ", dir_light);
 
 #ifdef DBG_DIFFUSE
     fprintf(stderr, "hit object id was       :\t%d\n", hitobj->objid);
@@ -83,6 +86,7 @@ vecprn3(stderr, "dir_light ", dir_light);
     fprintf(stderr, "light object id         :\t%d\n", lobj->objid);
     vecprn3(stderr, "light center was        : ", light->center);
     vecprn3(stderr, "unit vector to light is : ", dir_light);
+    vecprn3(stderr, "unit vector to obj is   : ", dir_obj);
     fprintf(stderr, "distance to light is    :\t%5.3lf\n", dist_light);
     fprintf(stderr, "cosine is               :\t%5.3lf\n", cos_theta);
 #endif

@@ -47,7 +47,6 @@ obj_t* plane_init(FILE* in, int objtype) {
         obj->free_obj = free_plane;
     }
 
-
     return obj;
 }
 

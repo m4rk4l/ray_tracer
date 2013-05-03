@@ -1,4 +1,4 @@
 #Ingores all bin directories
-Makefile
+./Makefile
 bin/
 objects/

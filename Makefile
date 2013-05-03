@@ -4,15 +4,15 @@
 
 CC=-gcc
 
-#DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
-#DEBUG += -DDBG_DIFFUSE
+DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
+DEBUG += -DDBG_DIFFUSE
 #DEBUG += -DDBG_MAKE_PIXEL
 #DEBUG += -DDBG_PIX_2_WORLD
 #DEBUG +=-DDBG_CLAMP_INTENSITY
 #DEBUG += -DDBG_HITS_PLANE
 #DEBUG += -DDBG_HITS_SPHERE -DDBG_SPHERE_GETAMB
 
-INPUT = 160 120 < input/v2/spec2.txt 2> runtime.info > img.ppm
+INPUT = 5 5 < input/v2/d05.txt 2> runtime.info > img.ppm
 
 # Location of header files
 INCDIR = include/

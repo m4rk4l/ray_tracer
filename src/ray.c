@@ -55,19 +55,17 @@ obj_t* find_closest_obj(list_t* objs, double* base, double* dir, void* smt,
     obj_t* closest = NULL;
     obj_t* cur_obj = objs->head;
     double shortest = -1; // dont really need shortest, could use mindist.
-    double tempdir[VECTOR_SIZE];
-    unitvec(dir, tempdir);// making sure that dir is a unit vector
+    unitvec(dir, dir);// making sure that dir is a unit vector
     while(cur_obj != NULL) {
-        double dist = cur_obj->hits(base, tempdir, cur_obj);
+        double dist = cur_obj->hits(base, dir, cur_obj);
         if((dist < shortest || shortest == -1) && dist != -1) {
-            obj_hitloc(base, tempdir, dist, cur_obj->hitloc);
             closest = cur_obj;
             shortest = dist;
         }
 #ifdef DBG_FND
-    fprintf(stderr, "FND %4d: %5.1lf -", cur_obj->objid, dist);
+    fprintf(stderr, "FND %4d: %5.1lf - ", cur_obj->objid, dist);
     vecprn3(stderr, "base ", base);
-    vecprn3(stderr, "direction ", dir);// temp dir.
+    vecprn3(stderr, "dir ", dir);// temp dir.
     vecprn3(stderr, "hits ", cur_obj->hitloc);
     fprintf(stderr, "\n");
 #endif

@@ -76,6 +76,7 @@ void tplane_dump(FILE* out, obj_t* obj) {
  */
 double hits_tplane(double* base, double* dir, obj_t* obj) {
     double t = -1;
+fprintf(stdout, "hits_tplane\n");
     t = hits_plane(base, dir, obj);
     return t;
 }

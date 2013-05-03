@@ -60,16 +60,3 @@ obj_t* object_init(FILE* in, int objtype) {
 
     return obj;
 }
-
-/**
- * gets the hitlocation of objects (sphere and planes...)
- * @param base is the base from object.
- * @param dir is the direction vector.
- * @param dist is the minimum distance.
- * @param dest is the destiantion pointer.
- */
-void obj_hitloc(double* base, double* dir, double dist, double* dest) {
-    double scalled[3];
-    scale3(dist, dir, scalled);
-    sum3(base, scalled, dest);
-}

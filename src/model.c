@@ -80,6 +80,7 @@ static void dump_or_free(FILE* out, list_t* aList, int option) {
     switch (option) {
         case DUMP_OBJ:
             while(cur != NULL) {
+                fprintf(out, "object id:\t%d", cur->objid);
                 cur->obj_dump(out, cur);
                 fprintf(out, "-------------------------------------------"
                                 "---------------\n");

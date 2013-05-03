@@ -325,7 +325,6 @@ void mat_rot(double* normal, double* xdir, double* dest) {
     double u_v1[SIZE];
     double u_v2[SIZE];
     double cross[SIZE];
-    int i;
 
     cpy_vec(v1, normal, SIZE);
     cpy_vec(v2, xdir, SIZE);

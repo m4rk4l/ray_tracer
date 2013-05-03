@@ -33,15 +33,9 @@ obj_t* fplane_init(FILE* in, int objtype) {
         free(obj);
         obj = NULL;
     } else {
-        unitvec(fplane->xdir, fplane->xdir);
         obj->hits = hits_fplane;
         obj->obj_dump = fplane_dump;
         obj->free_obj = free_fplane;
-        //project xdir onto infinite plane
-        double temp[VECTOR_SIZE];
-        mat_proj(plane->normal, fplane->xdir, temp, VECTOR_SIZE);
-        //compute required rotation matrix
-        mat_rot(plane->normal, temp, *(fplane->rotmat));
     }
 
     return obj;
@@ -55,6 +49,7 @@ obj_t* fplane_init(FILE* in, int objtype) {
 void fplane_dump(FILE* out, obj_t* obj) {
     plane_t* plane = (plane_t*)obj->priv;
     fplane_t* fplane = (fplane_t*)plane->plane_priv;
+
     fprintf(out, "\nDumping object of type  Finite Plane:\n");
     material_dump(out, obj->material);
     fprintf(out, "\nFinite Plane data:\n");
@@ -63,6 +58,19 @@ void fplane_dump(FILE* out, obj_t* obj) {
     vecprn3(out, "\tx dir - ", fplane->xdir);
     fprintf(out, "\tsize -\t\t%5.2lf, %5.2lf\n",
                     fplane->size[0], fplane->size[1]);
+
+    //project xdir onto infinite plane
+    unitvec(fplane->xdir, fplane->xdir);
+    vecprn3(out, "Unitized x direction: ", fplane->xdir);
+    double proj[VECTOR_SIZE];
+    double temp_normal[VECTOR_SIZE];
+    unitvec(plane->normal, temp_normal);
+    mat_proj(temp_normal, fplane->xdir, proj, VECTOR_SIZE);
+    vecprn3(out, "projected x direction: ", proj);
+    //compute required rotation matrix
+    mat_rot(plane->normal, proj, *(fplane->rotmat));
+
+    mat_print(out, "Rotation Matrix:\n", *(fplane->rotmat), VECTOR_SIZE);
 }
 
 /**
@@ -77,10 +85,16 @@ double hits_fplane(double* base, double* dir, obj_t* obj) {
     double newhit[SIZE];
     plane_t* plane = obj->priv;
     fplane_t* fplane = plane->plane_priv;
+    unitvec(dir, dir);
     t = hits_plane(base, dir, obj);
     if (t > 0) {
         //transform coordinates
         diff3(plane->point, obj->hitloc, newhit);
+#ifdef DBG_FND
+    mat_print(stderr, "Rotation Matrix:\n", *(fplane->rotmat), VECTOR_SIZE);
+    vecprn3(stderr, "original hitpoint:\t", obj->hitloc);
+    vecprn3(stderr, "translated hitpoint:\t", newhit);
+#endif
         mat_xform(*(fplane->rotmat), newhit, newhit, VECTOR_SIZE);
         //do tests.
         if ((newhit[0] > fplane->size[0]) || (newhit[0] < 0.0)) {
