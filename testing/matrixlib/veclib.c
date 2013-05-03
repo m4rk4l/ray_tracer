@@ -221,12 +221,7 @@ void mat_mul(double* x, double* y, double* z, size_t size) {
     cpy_mat(A, x, size);
     cpy_mat(B, y, size);
 
-//fprintf(stderr, "Matrix Multiplication\n");
-//mat_print(stderr, "A: ", A, size);
-//mat_print(stderr, "B: ", B, size);
-
     multiply(size, size, size, size, A, B, z);
-//mat_print(stderr, "z: ", z, size);
 }
 
 /**
@@ -242,10 +237,6 @@ void mat_vec_mul(double* x, double* y, double* z, size_t size) {
 
     cpy_mat(A, x, size);
     cpy_vec(v, y, size);
-
-//fprintf(stderr, "Matrix vector multiplication\n");
-//mat_print(stderr, "A: ", A, size);
-//vecprn3(stderr, "v: ", v);
 
     multiply(size, size, size, 1, A, v, z);
 }
@@ -268,7 +259,6 @@ static void multiply(int rowA, int colA, int rowB, int colB, double* A,
     double sum = 0;
     for (i = 0; i < rowA; i++) {
         for (j = 0; j < colB; j++) {
-            fprintf(stderr, "%d\n", j);
             for (k = 0; k < colA; k++) {
                 sum += *(A + ((i*rowA)+ k)) * *(B + ((k*colB) + j));
             }
@@ -279,6 +269,22 @@ static void multiply(int rowA, int colA, int rowB, int colB, double* A,
             }
             sum = 0;
         }
+    }
+}
+
+/**
+ *
+ */
+void vec_mult(double* u, double* v, double* w) {
+    double temp_u[SIZE];
+    double temp_v[SIZE];
+    int i;
+
+    cpy_vec(temp_u, u, SIZE);
+    cpy_vec(temp_v, v, SIZE);
+
+    for (i = 0; i < SIZE; i++) {
+        w[i] = temp_u[i]*temp_v[i];
     }
 }
 
@@ -334,11 +340,13 @@ void mat_rot(double* normal, double* xdir, double* dest) {
     double v2[SIZE];
     double u_v1[SIZE];
     double u_v2[SIZE];
+    double cross[SIZE];
 
-    cpy_vec(v2, xdir, SIZE);
     cpy_vec(v1, normal, SIZE);
+    cpy_vec(v2, xdir, SIZE);
     unitvec(v1, u_v1);
     unitvec(v2, u_v2);
+    mat_cross(u_v1, u_v2, cross, SIZE);
 
     cpy_vec(dest, u_v2, SIZE);
     cpy_vec((dest + 2*SIZE), u_v1, SIZE);
@@ -363,6 +371,27 @@ void mat_print(FILE* out, char* desc, double* matrix, int size) {
         }
         fprintf(out, "\n");
     }
+}
+
+/**
+ * calcualtes a reflection direction.
+ * @param unitin - unit vector in the incoming direction.
+ * @param unitnorm - outward surface normal.
+ * @param unit vector in the directio of bounce.
+ */
+void reflect3(double* unitin, double* unitnorm, double* unitout) {
+    double temp_unitin[3];
+    double temp_unitnorm[3];
+    double minuend[3];
+
+    cpy_vec(temp_unitin, unitin, SIZE);
+    cpy_vec(temp_unitnorm, unitnorm, SIZE);
+
+    scale3(-1, temp_unitin, temp_unitin);
+    scale3(2, temp_unitnorm, temp_unitnorm);
+    scale3(dot3(temp_unitin, temp_unitnorm), temp_unitnorm, minuend);
+
+    diff3(minuend, temp_unitin, unitout);
 }
 
 /** Note that for the following two functions the dest and src params MUST

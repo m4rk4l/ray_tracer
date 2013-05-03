@@ -12,7 +12,7 @@
 
 #define ALMOST_ZERO 0.0000001
 #define PI 3.14159265359
-#define MOD 0
+#define MAX_DIST 30
 
 /** Maybe have a parsing function here, but too complicated... */
 int parse_doubles(FILE* in, double* output, char* format, int size);

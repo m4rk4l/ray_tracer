@@ -11,6 +11,7 @@
 #define PROJ 4
 #define PRINT 5
 #define ROT 6
+#define MULT_VEC 7
 
 /** Some func delarations */
 void tests();
@@ -33,8 +34,8 @@ void tests() {
     print_mat_op(NULL, NULL, NULL, SIZE, PRINT);
 
     printf("\n-----------------------Normal Test:------------------------\n");
-    double vec1[] = {1, 1, 1};
-    double vec2[] = {1, 0, -1};
+    double vec1[] = {2, 4, -1};
+    double vec2[] = {9, -5, 3};
     double vec3[] = {0, 0, 0};
     double mat1[] = {1,2,3, 4,5,6, 7,8,9};
     double mat2[] = {0,1,2, 3,4,5, 6,7,8};
@@ -45,6 +46,7 @@ void tests() {
     print_mat_op(mat1, NULL, mat3, SIZE, XPOSE);
     print_mat_op(mat1, vec1, vec3, SIZE, XFORM);
     print_mat_op(vec1, vec2, mat3, SIZE, ROT);
+    print_mat_op(vec1, vec2, vec3, SIZE, MULT_VEC);
 /**
     printf("\n---------------------Same Pointer Test:--------------------\n");
     print_mat_op(vec1, vec1, vec1, SIZE, CROSS);
@@ -142,6 +144,13 @@ void print_mat_op(double* v1, double* v2, double* v3, size_t size, int op) {
             vecprn3(stdout, "\txdir: ", v2);
             mat_rot(v1, v2, v3);
             mat_print(stdout, "\trotation\n", v3, SIZE);
+        break;
+        case MULT_VEC:
+            fprintf(stdout, "\tVECTOR MULTIPLICATION\n");
+            vecprn3(stdout, "\tvec1, ", v1);
+            vecprn3(stdout, "\tvec2, ", v2);
+            vec_mult(v1, v2, v3);
+            vecprn3(stdout, "\tvec3 ", v3);
         break;
         default:
             printf("Invalid operation.\n");

@@ -275,6 +275,22 @@ static void multiply(int rowA, int colA, int rowB, int colB, double* A,
 /**
  *
  */
+void vec_mult(double* u, double* v, double* w) {
+    double temp_u[SIZE];
+    double temp_v[SIZE];
+    int i;
+
+    cpy_vec(temp_u, u, SIZE);
+    cpy_vec(temp_v, v, SIZE);
+
+    for (i = 0; i < SIZE; i++) {
+        w[i] = temp_u[i]*temp_v[i];
+    }
+}
+
+/**
+ *
+ */
 void mat_xpose(double* x, double* z, size_t size) {
     double A[size*size];
     unsigned int i, j;
@@ -355,6 +371,27 @@ void mat_print(FILE* out, char* desc, double* matrix, int size) {
         }
         fprintf(out, "\n");
     }
+}
+
+/**
+ * calcualtes a reflection direction.
+ * @param unitin - unit vector in the incoming direction.
+ * @param unitnorm - outward surface normal.
+ * @param unit vector in the directio of bounce.
+ */
+void reflect3(double* unitin, double* unitnorm, double* unitout) {
+    double temp_unitin[3];
+    double temp_unitnorm[3];
+    double minuend[3];
+
+    cpy_vec(temp_unitin, unitin, SIZE);
+    cpy_vec(temp_unitnorm, unitnorm, SIZE);
+
+    scale3(-1, temp_unitin, temp_unitin);
+    scale3(2, temp_unitnorm, temp_unitnorm);
+    scale3(dot3(temp_unitin, temp_unitnorm), temp_unitnorm, minuend);
+
+    diff3(minuend, temp_unitin, unitout);
 }
 
 /** Note that for the following two functions the dest and src params MUST

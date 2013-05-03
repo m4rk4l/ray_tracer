@@ -17,6 +17,7 @@ void sum3(double* vec1, double* vec2, double* vecsum);
 void unitvec(double* vec1, double* vec2);
 void vecprn3(FILE* out, char* desc, double* vec);
 void cpy_vec(double* dest, double* src, int size);
+void reflect3(double* unitin, double* unitnorm, double* unitout);
 
 /** Matrix functions */
 //static double IDENT_MAT[] = {1, 0, 0, 0, 1, 0, 0, 0, 1};
@@ -24,6 +25,7 @@ void cpy_vec(double* dest, double* src, int size);
 void mat_cross(double* v1, double* v2, double* v3, size_t size);
 void mat_mul(double* x, double* y, double* z, size_t size);
 void mat_vec_mul(double* x, double* y, double* z, size_t size);
+void vec_mult(double* u, double* v, double* w);
 void mat_xpose(double* x, double* z, size_t size);
 void mat_xform(double* y, double* x, double* z, size_t size);
 void mat_proj(double* n, double* v, double* w, size_t size);
