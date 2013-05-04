@@ -1,0 +1,117 @@
+8 6        world x and y dims
+0 3 7      viewpoint (x, y, z)
+
+14           plane
+1  5  1      rgb ambient
+2  2  2     rgb diffuse
+0  0  0      rgb specular
+
+0  1  0      normal
+0  -3 0      point
+
+14           plane
+0  0  0      rgb ambient
+5  9  9      rgb diffuse
+0  0  0      rgb specular
+
+0  0  1      normal
+0  0  -12    point
+
+
+
+15           finite plane right
+0  0  0      rgb ambient
+3  0  9      rgb diffuse
+0  0  0      rgb specular
+
+3  -3  4      normal
+0.2  -3  -4    point
+4  0  -7     x direction
+5  5         size
+
+15           finite plane roof
+0  0  0      rgb ambient
+3  0  9      rgb diffuse
+0  0  0      rgb specular
+
+0  1  0.3      normal
+-3  2.2  -8    point
+
+3  0  4      x direction
+5  5         size
+
+15           finite plane left
+0  0  0      rgb ambient
+3  0  9      rgb diffuse
+0  0  0      rgb specular
+
+-4 2.6  3      normal
+-3.2 -3  -8    point
+
+3  0   4     x direction
+5 5          size
+
+13           top sphere
+7  4  2      rgb ambient
+4  4  0      rgb diffuse
+0  0  0      rgb specular
+
+0.5 1.9 -7.5 center
+0.5          radius
+
+
+
+13           sphere top 2
+7  4  2      rgb ambient
+4  4  0      rgb diffuse
+0  0  0      rgb specular
+
+-1 0.233 -7.5 center
+0.5          radius
+
+
+13           sphere bottom 2
+7  4  2      rgb ambient
+4  4  0      rgb diffuse
+0  0  0      rgb specular
+
+-.6 -2 -5.4 center
+0.5          radius
+
+
+13           sphere middle 3
+7 4 2      rgb ambient
+4  4  0      rgb diffuse
+0  0  0      rgb specular
+
+3 -1.0 -4.9   center
+0.5          radius
+
+
+13           sphere bottom 3
+7  4  2      rgb ambient
+4  4  0      rgb diffuse
+0  0  0      rgb specular
+
+1.5 -2.2 -4.6 center
+0.5          radius
+
+13           sphere top 3
+7  4  2      rgb ambient
+6  4  0      rgb diffuse
+0  0  0      rgb specular
+
+4.4 -0.1 -5.3 center
+0.5          radius 
+
+10           light
+6  4  8      emissivity
+4  3  3      location
+
+10           light
+4  4  8      emissivity
+-4 6  3      location
+
+10           light
+6  4  8      emissivity
+0 -2  3      location
