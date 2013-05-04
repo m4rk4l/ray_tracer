@@ -1,40 +1,25 @@
-This file contains an implementation of a raytracer.
+This directory contains an implementation of a raytracer.
 Authors: Marco Anton & Ben Dana
 
-to run a fresh program:
+to compile a fresh program:
     - make fresh
 to run raytracer:
     - make run
-one can change the input files by changing the ''Makefile'' file. user should
-scroll to the bootom and change the run target
+one can change the input files by changing the ''Makefile'' file.
+User can just change the Macro INPUT.
 
-also, our created images are in input/in01.txt and input/in02.txt
-
-our program expects the following format:
-x x     world x and y dims
-x x x   viewpoint location
-
-x       object
-x x x   ambient
-x x x   diffuse
-x x x   specular
-
-x x x   the following lines are object spcific.
-x x     one must leave a blank line between obj specific
-x x x   data and the next object
-...
+Our created files can be found on input/v0/
+We couldn't find the previous version of our ray tracer.
+And couldn't come up with specTile.txt since our functions were not
+producing them.
 
 TODO:
-    - Parsing objects correctly  (done, could improve reading obj. as long
-      there are lines, keep trying to read objects).
+    - Parsing objects correctly (More error checking!!!).
     - creating image (DONE, adding more images to be created.)
     - write image to stdout (DONE)
 
-NOT WORKING
-    - need to take care of memery leaks!!!
-    - working on procedural planes - checkout pplane.h/c
-    - need to figure out which formula to use in the projection funciton
-      see veclib.c/veclib.h
-
-Working on:
-    - procedural planes
+NOT WORKING:
+    procedural spheres - one of our functions is not working as expected
+                         (input/v0/proc1.txt).
+    Tiled Planes - gives a segfault.
+    Specular light - doesn't work properly

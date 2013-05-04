@@ -14,7 +14,7 @@ CC=-gcc
 
 #EXTRAS = -DALIASING
 
-INPUT = 640 480 < input/v0/proc.txt 2> runtime.info > img.ppm
+INPUT = 640 480 < input/v0/model.txt 2> runtime.info > img.ppm
 
 # Location of header files
 INCDIR = include/
