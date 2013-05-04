@@ -2,6 +2,7 @@
 
 /** method declarations */
 static int check_arguments(int argc, char** argv);
+static double randpix(int value);
 
 /**
  * used to initialize a projection structure.
@@ -68,35 +69,33 @@ void projection_dump(FILE* out, proj_t* proj) {
  * @param world pointer to three doubles.
  */
 void map_pix_to_world(proj_t* proj, int x, int y, double* world) {
-#ifdef DBG_PIX_2_WORLD
-    fprintf(stderr, "\nGiven:\n"
-                    "\tpixel: (%5.2d, %5.2d)\n"
-                    "\tx, y : (%5.2d, %5.2d)\n"
-                    "\tworld: (%5.2lf, %5.2lf)\n",
-                    proj->win_size_pixel[0], proj->win_size_pixel[1],
-                    x, y,
-                    proj->win_size_world[0], proj->win_size_world[1]);
-#endif
+#ifdef ALIASING
+    double rx;
+    double ry;
+    rx = randpix(x);
+    ry = randpix(y);
+    world[0] = (1.0 * rx / proj->win_size_pixel[0]) * proj->win_size_world[0];
+    world[0] = (1.0 * ry / proj->win_size_pixel[1]) * proj->win_size_world[1];
+    world[2] = 0.0;
+#else
     world[0] = (double) x / (proj->win_size_pixel[0] - 1) *
                                             proj->win_size_world[0];
-#ifdef DBG_PIX_2_WORLD
-    fprintf(stderr, "\tcur world[0]: %5.2lf\n", world[0]);
-#endif
     world[0] -= proj->win_size_world[0] / 2.0;
-#ifdef DBG_PIX_2_WORLD
-    fprintf(stderr, "\tfinal world[0]: %5.2lf\n", world[0]);
-#endif
     world[1] = (double) y / (proj->win_size_pixel[1] - 1) *
                                             proj->win_size_world[1];
-#ifdef DBG_PIX_2_WORLD
-    fprintf(stderr, "\tcur world[1]: %5.2lf\n", world[1]);
-#endif
     world[1] -= proj->win_size_world[1] / 2.0;
-#ifdef DBG_PIX_2_WORLD
-    fprintf(stderr, "\tfinal world[1]: %5.2lf\n", world[1]);
-#endif
     
     world[2] = 0.0;
+#endif
+}
+
+/**
+ * comes up with a random position of a pixel.
+ * @param value is a seed value for the random function.
+ */
+static double randpix(int value) {
+    srandom(value);
+    return random();
 }
 
 /**
@@ -112,6 +111,7 @@ static int check_arguments(int argc, char** argv) {
         printf("#### in projection.c:\n\tcheck_arguments: argc != 3\n");
         error++;
     }
+    randpix(1);// to get rid of warning of not using randpix
     /*TODO: possible improvement is to check the arguments to see if they are 
      * ints with isdigit func from ctype.h */
     return error;

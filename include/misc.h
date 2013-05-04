@@ -13,6 +13,7 @@
 #define ALMOST_ZERO 0.0000001
 #define PI 3.14159265359
 #define MAX_DIST 30
+#define AA_SAMPLES 4
 
 /** Maybe have a parsing function here, but too complicated... */
 int parse_doubles(FILE* in, double* output, char* format, int size);

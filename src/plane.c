@@ -97,6 +97,7 @@ double hits_plane(double* base, double* dir, obj_t* obj) {
                       normal_dot_dir,
                       dist);
 #endif
+        plane_hitloc(base, dir, dist, obj->hitloc);
         // checking special cases of dist.
         double hz = obj->hitloc[2];
 #ifdef DBG_HITS_PLANE
@@ -105,7 +106,7 @@ double hits_plane(double* base, double* dir, obj_t* obj) {
         if (dist < ALMOST_ZERO || hz > ALMOST_ZERO) {
             dist = -1;
         } else { // otherwise, set hitloc and normal
-            plane_hitloc(base, dir, dist, obj->hitloc);
+            //cpy_vec(obj->normal, plane->normal, VECTOR_SIZE);
             double unitnorm[VECTOR_SIZE];
             unitvec(plane->normal, unitnorm);
             cpy_vec(obj->normal, unitnorm, VECTOR_SIZE);

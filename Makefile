@@ -4,15 +4,17 @@
 
 CC=-gcc
 
-DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
-DEBUG += -DDBG_DIFFUSE
+#DEBUG = -DDBG_PIX -DDBG_WORLD -DDBG_HIT -DDBG_FND -DDBG_AMB
+#DEBUG += -DDBG_DIFFUSE
 #DEBUG += -DDBG_MAKE_PIXEL
 #DEBUG += -DDBG_PIX_2_WORLD
 #DEBUG +=-DDBG_CLAMP_INTENSITY
 #DEBUG += -DDBG_HITS_PLANE
 #DEBUG += -DDBG_HITS_SPHERE -DDBG_SPHERE_GETAMB
 
-INPUT = 5 5 < input/v2/d05.txt 2> runtime.info > img.ppm
+#EXTRAS = -DALIASING
+
+INPUT = 640 480 < input/v0/proc.txt 2> runtime.info > img.ppm
 
 # Location of header files
 INCDIR = include/
@@ -21,7 +23,7 @@ OBJDIR = objects/
 # location of c files
 SRCDIR = src/
 
-CFLAGS = -I $(INCDIR) $(DEBUG) -Wall -Wextra -g
+CFLAGS = -I $(INCDIR) $(DEBUG) $(EXTRAS) -Wall -Wextra -g
 LIBS = -lm
 
 # grab all the c files from the src dir
@@ -56,7 +58,6 @@ default all: $(PROG)
 #---------------------------------------------------------------------------
 $(PROG): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $(PROG) $(LIBS)
-
 
 
 #---------------------------------------------------------------------------

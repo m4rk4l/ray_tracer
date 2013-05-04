@@ -13,6 +13,12 @@
 void ray_trace(model_t* model, double* base, double* dir, double* intensity,
                                         double total_dist, obj_t* last_hit) {
     double mindist;
+    double specref[VECTOR_SIZE] = {0, 0, 0};
+
+    if (total_dist > MAX_DIST) {//MAX_DIST is set in misc.c
+        return;
+    }
+
     obj_t* closest = find_closest_obj(model->scene, base, dir, NULL,
                                                                     &mindist);
 
@@ -24,17 +30,27 @@ void ray_trace(model_t* model, double* base, double* dir, double* intensity,
                            closest->objid, mindist, closest->hitloc[0],
                            closest->hitloc[1], closest->hitloc[2]);
 #endif
-    //add mindist to total_dist
     total_dist += mindist;
-    //set intensity to the ambient reflectivity of closest
+
     closest->getamb(closest, intensity);
-    //TODO: add diffuse reflectivity of the object ath the hitpoint to the
-    //intensity vector.
+    closest->getspec(closest, specref);
+
     diffuse_illumination(model, closest, intensity);
-    //divide intensity by total_dist
+
     double factor = 1/total_dist;
     double temp_intensity[3] = {intensity[0], intensity[1], intensity[2]};
     scale3(factor, temp_intensity, intensity);
+
+    if (dot3(specref, specref) > 0) {
+        double specint[VECTOR_SIZE] = {0, 0, 0};
+        double ref_dir[3] = {0,0,0};
+        reflect3(dir, closest->normal, ref_dir);
+        ray_trace(model, closest->hitloc, ref_dir, specint,
+                                                    total_dist, closest);
+        vec_mult(specref, specint, specref);
+    }
+    sum3(intensity, specref, intensity);
+
 #ifdef DBG_AMB
     fprintf(stderr, "AMB (%5.1lf, %5.1lf, %5.1lf) - \n",
                             intensity[0], intensity[1], intensity[2]);

@@ -169,7 +169,7 @@ void vecprn3(FILE* out, char* desc, double* vec) {
     if(vec == NULL) {
         fprintf(out, "Invalid input. NULL?.\n");
     } else {
-        fprintf(out, "%s\t<%5.2lf, %5.2lf, %5.2lf>\n", desc, vec[0], vec[1],
+        fprintf(out, "%s\t<%5.3lf, %5.3lf, %5.3lf>\n", desc, vec[0], vec[1],
                                                                     vec[2]);
     }
 }

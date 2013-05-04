@@ -27,11 +27,11 @@ void make_image(model_t* model) {
     int incrementer = 0;
     for(y = 0; y < height; y++) {
         for(x = 0; x < width; x++) {
+            make_pixel(model, x, height - y, (pixmap + incrementer));//change y to
+            incrementer += VECTOR_SIZE;                     //height - y
 #ifdef DBG_PIX
     fprintf(stderr, "\nPIX %4d %4d - \n", x, y);
 #endif
-            make_pixel(model, x, y, (pixmap + incrementer));//change y to
-            incrementer += VECTOR_SIZE;                     //height - y
         }
     }
 
@@ -61,13 +61,20 @@ void make_pixel(model_t* model, int x, int y, unsigned char* pixval) {
         intensity[i] = 0.0;
     }
 
+#ifdef ALIASING
+    int k;
+    for (k = 0; k < AA_SAMPLES; k++) {
+        map_pix_to_world(model->proj, x, y, world);
+        get_dir(model->proj->view_point, world, dir);
+        ray_trace(model, model->proj->view_point, dir, intensity, 0.0, NULL);
+    }
+    scale3(255.0 / AA_SAMPLES, intensity, intensity);
+#else
     get_dir(model->proj->view_point, world, dir);
-#ifdef DBG_MAKE_PIXEL
-    fprintf(stderr, "\ndirection: (%5.2lf, %5.2lf, %5.2lf)\n",
-                    dir[0], dir[1], dir[2]);
-#endif
     ray_trace(model, model->proj->view_point, dir, intensity, 0.0, NULL);
     //clamp each element of intensity to the range (0.0, 1.0)
+#endif
+
     clamp_intensity(SCALE_RGB_MIN, SCALE_RGB_MAX, intensity);
     //set rgb components of vector pointed to pixval to 255 * its intensity.
     for (i = 0; i < VECTOR_SIZE; i++) {
@@ -93,9 +100,6 @@ static void get_dir(double* view_point, double* world, double* dir) {
     vecprn3(stderr, "diff(vp, w) ", vec);
     vecprn3(stderr, "dir ", dir);
 #endif
-    //double vec[3] = {0.0, 0.0, 0.0};
-    //diff3(view_point, world, vec);
-    //unitvec(vec, dir);
 }
 
 /**

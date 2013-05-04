@@ -85,17 +85,20 @@ double hits_fplane(double* base, double* dir, obj_t* obj) {
     double newhit[SIZE];
     plane_t* plane = obj->priv;
     fplane_t* fplane = plane->plane_priv;
-    unitvec(dir, dir);
-    t = hits_plane(base, dir, obj);
+    double temp_dir[3];
+    unitvec(dir, temp_dir);
+
+    t = hits_plane(base, temp_dir, obj);
+
     if (t > 0) {
         //transform coordinates
         diff3(plane->point, obj->hitloc, newhit);
+        mat_xform(*(fplane->rotmat), newhit, newhit, VECTOR_SIZE);
 #ifdef DBG_FND
     mat_print(stderr, "Rotation Matrix:\n", *(fplane->rotmat), VECTOR_SIZE);
     vecprn3(stderr, "original hitpoint:\t", obj->hitloc);
     vecprn3(stderr, "translated hitpoint:\t", newhit);
 #endif
-        mat_xform(*(fplane->rotmat), newhit, newhit, VECTOR_SIZE);
         //do tests.
         if ((newhit[0] > fplane->size[0]) || (newhit[0] < 0.0)) {
             t = -1;// return miss
