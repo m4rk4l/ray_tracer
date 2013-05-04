@@ -147,7 +147,6 @@ static void pplane0_amb(obj_t* obj, double* value) { //checkerboard
     double vec[3];
     plane_t* p = (plane_t*)obj->priv;
     int isum;
-    double sum;
 
     cpy_vec(value, obj->material->ambient, SIZE);
     diff3(p->point, obj->hitloc, vec);
