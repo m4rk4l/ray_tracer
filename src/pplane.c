@@ -1,11 +1,9 @@
 #include "plane.h"
-
-
 static void pplane0_amb(obj_t* obj, double* intensity);
 static void pplane1_amb(obj_t* obj, double* intensity);
 static void pplane2_amb(obj_t* obj, double* intensity);
 static void pplane3_amb(obj_t* obj, double* intensity);
-
+/* The following is a pointer to a list of ambient procedural shaders */
 static void (*plane_shaders[])(obj_t* obj, double* intensity) = {
     pplane0_amb,
     pplane1_amb,
@@ -36,14 +34,13 @@ obj_t* pplane_init(FILE* in, int objtype) {
     if (rc == 1 && ndx <= num_shaders) {
         plane_t* plane = new->priv;
         plane->plane_priv = NULL;
-        //new->priv->plane_priv = NULL;
         new->obj_dump = pplane_dump;
-        new->getamb = plane_shaders[ndx];//
+        new->getamb = plane_shaders[ndx];
         new->free_obj = free_pplane;
     } else {
         fprintf(stderr, "### in pplane_init\n\t"
                         "error with either parsing or ndx is invalid\n");
-        free_pplane(new); // frees a plane.
+        free_pplane(new);
         new = NULL;
     }
 
@@ -51,9 +48,10 @@ obj_t* pplane_init(FILE* in, int objtype) {
 }
 
 /**
- * A dumper function for pplane.
+ * A dumper function for pplane;
+ * If calling this func, obj must be a pplane.
  * @param out an output stream.
- * @param obj an object to print. if calling this func, obj must be a pplane.
+ * @param obj an object to print.
  */
 void pplane_dump(FILE* out, obj_t* obj) {
     plane_t* aplane = (plane_t*)obj->priv;
@@ -68,15 +66,7 @@ void pplane_dump(FILE* out, obj_t* obj) {
 }
 
 /**
- * a function that changes the ambient lightning.
- * @param obj is an object whose ambient we are changing.
- * @param value is apointer to an array?
-static void pplane0_amb(obj_t* obj, double* value) {
-}
- */
-
-/**
- * a function that changes the ambient lightning.
+ * Function that changes the ambient lightning in a geometric way.
  * @param obj is an object whose ambient we are changing.
  * @param value is apointer to an array?
  */
@@ -100,9 +90,10 @@ static void pplane1_amb(obj_t* obj, double* value) {
 }
 
 /**
- * a function that changes the ambient lightning.
+ * Function that changes the ambient lightning in a multi-colored 
+ * spherical shape.
  * @param obj is an object whose ambient we are changing.
- * @param value is apointer to an array?
+ * @param value is a pointer to a vector destination
  */
 static void pplane2_amb(obj_t* obj, double* value) {
     double vec[3];
@@ -123,11 +114,12 @@ static void pplane2_amb(obj_t* obj, double* value) {
 }
 
 /**
- * a function that changes the ambient lightning.
+ * Function that changes the ambient lightning to create 
+ * stripes on a plane.
  * @param obj is an object whose ambient we are changing.
- * @param value is apointer to an array?
+ * @param value is a pointer to a vector destination.
  */
-static void pplane3_amb(obj_t* obj, double* value) { // stripes
+static void pplane3_amb(obj_t* obj, double* value) {
     double vec[3];
     plane_t* p = (plane_t*)obj->priv;
     int isum;
@@ -146,19 +138,10 @@ static void pplane3_amb(obj_t* obj, double* value) { // stripes
     }
 
 }
-//helper method for pplane0
-static int toggle(int value) {
-    int returner = 0;
-    if (value == 0) {
-        returner = 1;
-    }
-    return returner;
-}
-    
 /**
- * a function that changes the ambient lightning.
+ * Function that changes the ambient lightning to a checkerboard.
  * @param obj is an object whose ambient we are changing.
- * @param value is apointer to an array?
+ * @param value is a pointer to a vector destination.
  */
 static void pplane0_amb(obj_t* obj, double* value) { //checkerboard
     double vec[3];
@@ -174,16 +157,12 @@ static void pplane0_amb(obj_t* obj, double* value) { //checkerboard
     isum = x + y;
     if (isum & 1) {
         value[0] = 1;
-    } else {
-        // leave alone for now
-        //value[2] = 0;
     }
 }
 
-
 /**
- * frees a pplane object.
- * @param obj is an objct to free
+ * Frees a procedural plane object.
+ * @param obj is an object to freed.
  */
 void free_pplane(obj_t* obj) {
     free_plane(obj);
