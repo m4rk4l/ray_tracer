@@ -175,8 +175,7 @@ static void pplane0_amb(obj_t* obj, double* value) { //checkerboard
     if (isum & 1) {
         value[0] = 1;
     } else {
-        // leave alone for now
-        //value[2] = 0;
+        value[2] = 1;
     }
 }
 
